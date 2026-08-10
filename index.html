@@ -376,7 +376,8 @@
         <p class="section-tag center">Prefer a Form?</p>
         <h3 class="center">Request a Booking</h3>
         <p class="section-lede center">Fill this in and we'll follow up by email &mdash; useful if you'd rather not use WhatsApp, or if someone else on our team needs to see your request.</p>
-        <form class="booking-form" id="booking-form">
+        <form class="booking-form" id="booking-form" action="https://formspree.io/f/xvkpkwbp" method="POST">
+          <input type="hidden" name="_subject" value="New booking request from the website">
           <label>
             Full name
             <input type="text" name="name" required>
@@ -455,7 +456,8 @@
           </li>
         </ul>
       </div>
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/xvkpkwbp" method="POST">
+        <input type="hidden" name="_subject" value="New contact form message from the website">
         <label>
           Name
           <input type="text" name="name" required>

@@ -17,43 +17,45 @@ mainNav.querySelectorAll('a').forEach(link => {
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Contact form -> opens a pre-filled email (no backend on this static site)
+// Forms submit to Formspree via AJAX so visitors stay on the page
+async function handleFormspreeSubmit(form, noteEl, successMessage) {
+  noteEl.textContent = 'Sending…';
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { Accept: 'application/json' }
+    });
+    if (response.ok) {
+      form.reset();
+      noteEl.textContent = successMessage;
+    } else {
+      const data = await response.json().catch(() => null);
+      const errorMsg = data && data.errors
+        ? data.errors.map((e) => e.message).join(', ')
+        : 'Something went wrong. Please try again or reach out via WhatsApp.';
+      noteEl.textContent = errorMsg;
+    }
+  } catch (err) {
+    noteEl.textContent = 'Could not send right now. Please try again or reach out via WhatsApp.';
+  }
+}
+
 const contactForm = document.getElementById('contact-form');
 const formNote = document.getElementById('form-note');
 
 contactForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const name = contactForm.name.value.trim();
-  const email = contactForm.email.value.trim();
-  const message = contactForm.message.value.trim();
-
-  const subject = encodeURIComponent(`Website inquiry from ${name}`);
-  const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
-  window.location.href = `mailto:anacletmugisha@gmail.com?subject=${subject}&body=${body}`;
-
-  formNote.textContent = 'Opening your email client to send this message…';
+  handleFormspreeSubmit(contactForm, formNote, "Thanks — your message is on its way. We'll get back to you soon.");
 });
 
-// Booking request form -> opens a pre-filled email with all booking details
 const bookingForm = document.getElementById('booking-form');
 const bookingNote = document.getElementById('booking-note');
 
 if (bookingForm) {
   bookingForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    const f = bookingForm;
-    const lines = [
-      `Name: ${f.name.value.trim()}`,
-      `Email: ${f.email.value.trim()}`,
-      `Phone: ${f.phone.value.trim()}`,
-      `Service requested: ${f.service.value}`,
-      `Profession / career: ${f.profession.value.trim()}`,
-      `What they hope to gain from the session: ${f.goal.value.trim()}`
-    ];
-    const subject = encodeURIComponent(`Booking request from ${f.name.value.trim()}`);
-    const body = encodeURIComponent(lines.join('\n'));
-    window.location.href = `mailto:anacletmugisha@gmail.com?subject=${subject}&body=${body}`;
-    bookingNote.textContent = 'Opening your email client to send this booking request…';
+    handleFormspreeSubmit(bookingForm, bookingNote, "Thanks — your booking request is on its way. We'll follow up shortly.");
   });
 }
 
