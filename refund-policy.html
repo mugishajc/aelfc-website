@@ -10,13 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="refund">
 
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
       <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem" class="brand-mark">
-      <span class="brand-text">
+      <span class="brand-text" id="brand-text">
         <strong>AELFC</strong> Ltd
         <small>Anaclet's Experts Legal &amp; Financial Consultancy</small>
       </span>
@@ -29,45 +29,22 @@
 
 <main>
   <section class="section legal-page">
-    <div class="container legal-content">
-      <p class="section-tag">Legal</p>
-      <h1>Refund Policy</h1>
-      <p class="legal-updated">Last updated: August 2026</p>
-
-      <p>This policy covers paid coaching and advisory sessions booked through this website.</p>
-
-      <h2>Booking &amp; Payment</h2>
-      <p>Sessions are confirmed once payment has been made and a slot has been agreed with our team. Payment secures your booking time.</p>
-
-      <h2>Cancellations &amp; Rescheduling</h2>
-      <p>If you need to reschedule, contact us at least 24 hours before your scheduled session and we will work with you to find a new time at no extra cost.</p>
-
-      <h2>Refunds</h2>
-      <p>Because sessions involve dedicated preparation and reserved time, fees are generally non-refundable once a session has taken place. If you cancel with less than 24 hours' notice or do not attend, the session fee is forfeited. If AELFC Ltd is unable to deliver a session you have paid for, you will receive a full refund or a rescheduled session, at your choice.</p>
-
-      <h2>Questions</h2>
-      <p>For any question about a specific booking, contact us at <a href="mailto:anacletmugisha@gmail.com">anacletmugisha@gmail.com</a> or <a href="tel:+250788236356">+250 788 236 356</a> before making payment.</p>
-    </div>
+    <div class="container legal-content" id="legal-content"></div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem">
-      <div>
-        <strong>Anaclet's Experts Legal &amp; Financial Consultancy Ltd</strong>
-        <p>Expert Solutions | Client-Focused | All-in-One Trusted Partner</p>
-      </div>
-    </div>
+    <div class="footer-brand" id="footer-brand"></div>
     <nav class="footer-legal">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="refund-policy.html">Refund Policy</a>
     </nav>
-    <p class="copyright">&copy; <span id="year"></span> AELFC Ltd. All rights reserved.</p>
+    <p class="copyright">&copy; <span id="year"></span> <span id="copyright-name">AELFC Ltd</span>. All rights reserved.</p>
   </div>
 </footer>
 
-<script>document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());</script>
+<script src="js/render.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

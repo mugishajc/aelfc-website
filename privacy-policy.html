@@ -10,13 +10,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body data-page="privacy">
 
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
       <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem" class="brand-mark">
-      <span class="brand-text">
+      <span class="brand-text" id="brand-text">
         <strong>AELFC</strong> Ltd
         <small>Anaclet's Experts Legal &amp; Financial Consultancy</small>
       </span>
@@ -29,48 +29,22 @@
 
 <main>
   <section class="section legal-page">
-    <div class="container legal-content">
-      <p class="section-tag">Legal</p>
-      <h1>Privacy Policy</h1>
-      <p class="legal-updated">Last updated: August 2026</p>
-
-      <p>Anaclet's Experts Legal &amp; Financial Consultancy Ltd (AELFC Ltd) respects your privacy. This policy explains what information we collect through this website and how we use it.</p>
-
-      <h2>Information We Collect</h2>
-      <p>When you use our contact form, booking form, or reach out via WhatsApp or email, we collect the information you provide directly &mdash; such as your name, email address, phone number, profession, and details about the service you are requesting.</p>
-
-      <h2>How We Use Your Information</h2>
-      <p>We use this information only to respond to your inquiry, schedule and deliver the service you requested, and communicate with you about that engagement. We do not sell or rent your personal information to third parties.</p>
-
-      <h2>How We Store Your Information</h2>
-      <p>Form submissions on this site are sent directly to our email inbox via your own email client, or via WhatsApp. We do not operate a separate database of website visitor submissions.</p>
-
-      <h2>Confidentiality</h2>
-      <p>As a legal and financial consultancy, we treat all client information with strict confidentiality, consistent with our professional obligations.</p>
-
-      <h2>Contact Us</h2>
-      <p>If you have questions about this policy or how your information is handled, contact us at <a href="mailto:anacletmugisha@gmail.com">anacletmugisha@gmail.com</a> or <a href="tel:+250788236356">+250 788 236 356</a>.</p>
-    </div>
+    <div class="container legal-content" id="legal-content"></div>
   </section>
 </main>
 
 <footer class="site-footer">
   <div class="container footer-inner">
-    <div class="footer-brand">
-      <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem">
-      <div>
-        <strong>Anaclet's Experts Legal &amp; Financial Consultancy Ltd</strong>
-        <p>Expert Solutions | Client-Focused | All-in-One Trusted Partner</p>
-      </div>
-    </div>
+    <div class="footer-brand" id="footer-brand"></div>
     <nav class="footer-legal">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="refund-policy.html">Refund Policy</a>
     </nav>
-    <p class="copyright">&copy; <span id="year"></span> AELFC Ltd. All rights reserved.</p>
+    <p class="copyright">&copy; <span id="year"></span> <span id="copyright-name">AELFC Ltd</span>. All rights reserved.</p>
   </div>
 </footer>
 
-<script>document.getElementById('year') && (document.getElementById('year').textContent = new Date().getFullYear());</script>
+<script src="js/render.js"></script>
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

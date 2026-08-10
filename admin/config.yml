@@ -1,0 +1,212 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "assets/images/uploads"
+
+site_url: https://mugishajc.github.io/aelfc-website/
+display_url: https://mugishajc.github.io/aelfc-website/
+
+collections:
+  - name: "site"
+    label: "Website Content"
+    files:
+      - name: "brand"
+        label: "Brand & Contact Info"
+        file: "content/site.json"
+        fields:
+          - { label: "Brand", name: "brand", widget: "object", fields: [
+              { label: "Short Name (e.g. AELFC)", name: "name", widget: "string" },
+              { label: "Suffix (e.g. Ltd)", name: "suffix", widget: "string" },
+              { label: "Tagline (small text under logo)", name: "tagline", widget: "string" },
+              { label: "Full Company Name", name: "companyFullName", widget: "string" },
+              { label: "Footer Tagline", name: "footerTagline", widget: "string" },
+              { label: "Copyright Name", name: "copyrightName", widget: "string" }
+            ]}
+          - { label: "Contact Info", name: "contactInfo", widget: "object", fields: [
+              { label: "Email", name: "email", widget: "string" },
+              { label: "Phone (display, e.g. +250 788 236 356)", name: "phoneDisplay", widget: "string" },
+              { label: "Phone (digits only, e.g. 250788236356)", name: "phoneDigits", widget: "string" },
+              { label: "Website", name: "website", widget: "string" }
+            ]}
+
+      - name: "hero"
+        label: "Hero Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Hero", name: "hero", widget: "object", fields: [
+              { label: "Eyebrow (small text above headline)", name: "eyebrow", widget: "string" },
+              { label: "Headline Start", name: "headlineStart", widget: "string" },
+              { label: "Headline Highlight (colored words)", name: "headlineHighlight", widget: "string" },
+              { label: "Headline End", name: "headlineEnd", widget: "string" },
+              { label: "Lede Paragraph", name: "lede", widget: "text" },
+              { label: "Primary Button Label", name: "primaryCtaLabel", widget: "string" },
+              { label: "Secondary Button Label", name: "secondaryCtaLabel", widget: "string" },
+              { label: "Hero Image", name: "image", widget: "image" },
+              { label: "Hero Image Alt Text", name: "imageAlt", widget: "string" },
+              { label: "Stats", name: "stats", widget: "list", fields: [
+                  { label: "Value", name: "value", widget: "string" },
+                  { label: "Label", name: "label", widget: "string" }
+                ]}
+            ]}
+
+      - name: "about"
+        label: "About Us Section"
+        file: "content/site.json"
+        fields:
+          - { label: "About", name: "about", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } },
+              { label: "Vision", name: "vision", widget: "text" },
+              { label: "Mission", name: "mission", widget: "text" },
+              { label: "Core Values", name: "coreValues", widget: "list", field: { label: "Value", name: "value", widget: "string" } },
+              { label: "Motto Quote", name: "mottoQuote", widget: "string" },
+              { label: "Motto Subtext", name: "mottoSub", widget: "string" }
+            ]}
+
+      - name: "founder"
+        label: "Meet the Founder Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Founder", name: "founder", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Name", name: "name", widget: "string" },
+              { label: "Role", name: "role", widget: "string" },
+              { label: "Photo", name: "image", widget: "image" },
+              { label: "Photo Alt Text", name: "imageAlt", widget: "string" },
+              { label: "Bio Paragraphs", name: "paragraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } },
+              { label: "Areas of Expertise", name: "expertise", widget: "list", field: { label: "Item", name: "item", widget: "string" } },
+              { label: "Philosophy Quote", name: "quote", widget: "text" },
+              { label: "Button Label", name: "ctaLabel", widget: "string" }
+            ]}
+
+      - name: "services"
+        label: "Services Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Services", name: "services", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Service Cards", name: "items", widget: "list", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Bullet Points (leave empty to use description instead)", name: "bullets", widget: "list", field: { label: "Bullet", name: "bullet", widget: "string" }, required: false },
+                  { label: "Short Description (used when there are no bullet points)", name: "description", widget: "text", required: false },
+                  { label: "Request text (what gets sent on WhatsApp)", name: "requestText", widget: "string" }
+                ]}
+            ]}
+
+      - name: "mediation"
+        label: "Mediation Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Mediation", name: "mediation", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Practice Areas", name: "items", widget: "list", field: { label: "Area", name: "area", widget: "string" } }
+            ]}
+
+      - name: "tools"
+        label: "Tools Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Tools", name: "tools", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "'Coming Soon' Label", name: "comingSoonLabel", widget: "string" },
+              { label: "'Coming Soon' Items", name: "comingSoon", widget: "list", field: { label: "Item", name: "item", widget: "string" } }
+            ]}
+
+      - name: "brochures"
+        label: "Brochures Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Brochures", name: "brochures", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Brochure Images", name: "items", widget: "list", fields: [
+                  { label: "Image", name: "image", widget: "image" },
+                  { label: "Alt Text", name: "alt", widget: "string" }
+                ]}
+            ]}
+
+      - name: "fees"
+        label: "Fees & Booking Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Fees", name: "fees", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Pricing Cards", name: "items", widget: "list", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Price", name: "price", widget: "string" },
+                  { label: "Highlight this card?", name: "featured", widget: "boolean", default: false },
+                  { label: "Badge text (only if highlighted)", name: "badge", widget: "string", required: false },
+                  { label: "WhatsApp message text", name: "whatsappText", widget: "string" }
+                ]}
+              ,
+              { label: "Booking Form Tag", name: "formTag", widget: "string" },
+              { label: "Booking Form Heading", name: "formHeading", widget: "string" },
+              { label: "Booking Form Lede", name: "formLede", widget: "text" }
+            ]}
+
+      - name: "community"
+        label: "Support Our Work Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Community", name: "community", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Text", name: "text", widget: "text" },
+              { label: "Button Label", name: "ctaLabel", widget: "string" },
+              { label: "WhatsApp message text", name: "ctaWhatsappText", widget: "string" }
+            ]}
+
+      - name: "contact"
+        label: "Contact Section"
+        file: "content/site.json"
+        fields:
+          - { label: "Contact", name: "contact", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Text", name: "text", widget: "text" }
+            ]}
+
+      - name: "footer"
+        label: "Footer"
+        file: "content/site.json"
+        fields:
+          - { label: "Footer", name: "footer", widget: "object", fields: [
+              { label: "Company Name", name: "companyName", widget: "string" },
+              { label: "Tagline", name: "tagline", widget: "string" },
+              { label: "Copyright Name", name: "copyrightName", widget: "string" }
+            ]}
+
+      - name: "legal"
+        label: "Privacy & Refund Policy Pages"
+        file: "content/site.json"
+        fields:
+          - { label: "Legal Pages", name: "legal", widget: "object", fields: [
+              { label: "Privacy Policy", name: "privacy", widget: "object", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Last Updated Text", name: "updated", widget: "string" },
+                  { label: "Sections", name: "sections", widget: "list", fields: [
+                      { label: "Heading (leave empty for intro paragraph)", name: "heading", widget: "string", required: false },
+                      { label: "Body", name: "body", widget: "text" }
+                    ]}
+                ]},
+              { label: "Refund Policy", name: "refund", widget: "object", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Last Updated Text", name: "updated", widget: "string" },
+                  { label: "Sections", name: "sections", widget: "list", fields: [
+                      { label: "Heading (leave empty for intro paragraph)", name: "heading", widget: "string", required: false },
+                      { label: "Body", name: "body", widget: "text" }
+                    ]}
+                ]}
+            ]}

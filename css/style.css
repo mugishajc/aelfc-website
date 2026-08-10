@@ -106,8 +106,8 @@ ul { padding: 0; margin: 0; list-style: none; }
 .brand-text strong { font-size: 1.05rem; }
 .brand-text small { font-size: 0.65rem; color: var(--gray); letter-spacing: 0.02em; }
 
-.main-nav { display: flex; align-items: center; gap: 28px; }
-.main-nav a { font-weight: 500; font-size: 0.92rem; color: var(--ink); }
+.main-nav { display: flex; align-items: center; gap: 20px; }
+.main-nav a { font-weight: 500; font-size: 0.88rem; color: var(--ink); white-space: nowrap; }
 .main-nav a:hover { color: var(--navy); }
 .nav-cta {
   background: var(--navy);
@@ -115,6 +115,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   padding: 10px 20px;
   border-radius: 100px;
   font-weight: 600 !important;
+  white-space: nowrap;
 }
 .nav-cta:hover { background: var(--navy-dark); }
 
