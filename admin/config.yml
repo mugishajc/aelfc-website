@@ -28,7 +28,15 @@ collections:
               { label: "Email", name: "email", widget: "string" },
               { label: "Phone (display, e.g. +250 788 236 356)", name: "phoneDisplay", widget: "string" },
               { label: "Phone (digits only, e.g. 250788236356)", name: "phoneDigits", widget: "string" },
-              { label: "Website", name: "website", widget: "string" }
+              { label: "Website", name: "website", widget: "string" },
+              { label: "Business Hours (leave empty to hide)", name: "businessHours", widget: "string", required: false }
+            ]}
+          - { label: "Social Media Links (leave any empty to hide that icon)", name: "socialLinks", widget: "object", fields: [
+              { label: "Facebook URL", name: "facebook", widget: "string", required: false },
+              { label: "Instagram URL", name: "instagram", widget: "string", required: false },
+              { label: "LinkedIn URL", name: "linkedin", widget: "string", required: false },
+              { label: "X / Twitter URL", name: "twitter", widget: "string", required: false },
+              { label: "YouTube URL", name: "youtube", widget: "string", required: false }
             ]}
 
       - name: "hero"
@@ -137,6 +145,22 @@ collections:
                 ]}
             ]}
 
+      - name: "certifications"
+        label: "Certifications & Registrations"
+        file: "content/site.json"
+        fields:
+          - { label: "Certifications", name: "certifications", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Certificates (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Title (e.g. Data Controller Certificate)", name: "title", widget: "string" },
+                  { label: "Certificate File (PDF or image)", name: "file", widget: "file" },
+                  { label: "Thumbnail Image (optional)", name: "image", widget: "image", required: false },
+                  { label: "Description (optional)", name: "description", widget: "text", required: false }
+                ]}
+            ]}
+
       - name: "fees"
         label: "Fees & Booking Section"
         file: "content/site.json"
@@ -191,7 +215,7 @@ collections:
             ]}
 
       - name: "legal"
-        label: "Privacy & Refund Policy Pages"
+        label: "Privacy, Refund & Terms Pages"
         file: "content/site.json"
         fields:
           - { label: "Legal Pages", name: "legal", widget: "object", fields: [
@@ -204,6 +228,14 @@ collections:
                     ]}
                 ]},
               { label: "Refund Policy", name: "refund", widget: "object", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Last Updated Text", name: "updated", widget: "string" },
+                  { label: "Sections", name: "sections", widget: "list", fields: [
+                      { label: "Heading (leave empty for intro paragraph)", name: "heading", widget: "string", required: false },
+                      { label: "Body", name: "body", widget: "text" }
+                    ]}
+                ]},
+              { label: "Terms & Conditions", name: "terms", widget: "object", fields: [
                   { label: "Title", name: "title", widget: "string" },
                   { label: "Last Updated Text", name: "updated", widget: "string" },
                   { label: "Sections", name: "sections", widget: "list", fields: [

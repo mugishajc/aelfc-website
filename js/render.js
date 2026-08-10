@@ -226,6 +226,32 @@ function renderBrochures(data) {
   `;
 }
 
+function renderCertifications(data) {
+  const container = document.getElementById('certifications-content');
+  if (!container) return;
+  const c = data.certifications;
+  const section = container.closest('section');
+  if (!c.items || !c.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(c.tag)}</p>
+    <h2 class="center">${esc(c.heading)}</h2>
+    <p class="section-lede center">${esc(c.lede)}</p>
+    <div class="cert-grid">
+      ${c.items.map((item) => `
+        <a class="cert-card" href="${esc(item.file)}" target="_blank" rel="noopener">
+          ${item.image ? `<img src="${esc(item.image)}" alt="${esc(item.title)}">` : ''}
+          <h3>${esc(item.title)}</h3>
+          ${item.description ? `<p>${esc(item.description)}</p>` : ''}
+          <span class="cert-view">View Certificate &rarr;</span>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderFees(data) {
   if (!document.getElementById('fees-content')) return;
   const f = data.fees;
@@ -285,6 +311,7 @@ function renderContact(data) {
       <li><span class="contact-label">Phone</span><a href="tel:+${esc(info.phoneDigits)}">${esc(info.phoneDisplay)}</a></li>
       <li><span class="contact-label">WhatsApp</span><a href="${waHref}" target="_blank" rel="noopener">Chat with us</a></li>
       <li><span class="contact-label">Website</span><span>${esc(info.website)}</span></li>
+      ${info.businessHours ? `<li><span class="contact-label">Hours</span><span>${esc(info.businessHours)}</span></li>` : ''}
     </ul>
     <a class="btn btn-gold" href="${waHref}" target="_blank" rel="noopener" style="margin-top:8px;display:inline-block">Chat on WhatsApp</a>
   `;
@@ -347,6 +374,26 @@ function renderFooter(data) {
   }
   const copyrightEl = document.getElementById('copyright-name');
   if (copyrightEl) copyrightEl.textContent = f.copyrightName;
+
+  const socialEl = document.getElementById('footer-social');
+  if (socialEl && data.socialLinks) {
+    const s = data.socialLinks;
+    const platforms = [
+      { key: 'facebook', label: 'f', name: 'Facebook' },
+      { key: 'instagram', label: 'IG', name: 'Instagram' },
+      { key: 'linkedin', label: 'in', name: 'LinkedIn' },
+      { key: 'twitter', label: 'X', name: 'X (Twitter)' },
+      { key: 'youtube', label: '&#9654;', name: 'YouTube' }
+    ];
+    const active = platforms.filter((p) => s[p.key]);
+    if (active.length) {
+      socialEl.innerHTML = active.map((p) =>
+        `<a class="social-icon" href="${esc(s[p.key])}" target="_blank" rel="noopener" aria-label="${p.name}">${p.label}</a>`
+      ).join('');
+    } else {
+      socialEl.style.display = 'none';
+    }
+  }
 }
 
 function renderLegal(data) {
@@ -387,6 +434,7 @@ async function renderSite() {
   renderMediation(data);
   renderTools(data);
   renderBrochures(data);
+  renderCertifications(data);
   renderFees(data);
   renderCommunity(data);
   renderContact(data);

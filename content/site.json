@@ -11,7 +11,15 @@
     "email": "anacletmugisha@gmail.com",
     "phoneDisplay": "+250 788 236 356",
     "phoneDigits": "250788236356",
-    "website": "anacletsexpert.com"
+    "website": "anacletsexpert.com",
+    "businessHours": ""
+  },
+  "socialLinks": {
+    "facebook": "",
+    "instagram": "",
+    "linkedin": "",
+    "twitter": "",
+    "youtube": ""
   },
   "hero": {
     "eyebrow": "Professional · Trustworthy · Client-Focused",
@@ -169,6 +177,12 @@
       { "image": "assets/images/brochures/aelfc-brochure-business-growth.jpg", "alt": "AELFC Ltd brochure — Comprehensive Professional Solutions for Your Business Growth" }
     ]
   },
+  "certifications": {
+    "tag": "Credentials",
+    "heading": "Certifications & Registrations",
+    "lede": "Official certificates and registrations backing our work. Add yours here as they become available.",
+    "items": []
+  },
   "fees": {
     "tag": "Book a Session",
     "heading": "Fees & Advisory Booking",
@@ -225,6 +239,21 @@
         { "heading": "Cancellations & Rescheduling", "body": "If you need to reschedule, contact us at least 24 hours before your scheduled session and we will work with you to find a new time at no extra cost." },
         { "heading": "Refunds", "body": "Because sessions involve dedicated preparation and reserved time, fees are generally non-refundable once a session has taken place. If you cancel with less than 24 hours' notice or do not attend, the session fee is forfeited. If AELFC Ltd is unable to deliver a session you have paid for, you will receive a full refund or a rescheduled session, at your choice." },
         { "heading": "Questions", "body": "For any question about a specific booking, contact us using the details on our contact page before making payment." }
+      ]
+    },
+    "terms": {
+      "title": "Terms & Conditions",
+      "updated": "Last updated: August 2026",
+      "sections": [
+        { "heading": "", "body": "These terms govern your use of this website and any services booked through it with Anaclet's Experts Legal & Financial Consultancy Ltd (AELFC Ltd), based in Kigali, Rwanda." },
+        { "heading": "Use of This Website", "body": "This website is provided for information about our services and to let clients get in touch, book sessions, and download resources. You agree not to misuse the site, attempt to gain unauthorized access to it, or use its content for unlawful purposes." },
+        { "heading": "Our Services", "body": "Details on this site about our services, fees and packages are for general guidance. Specific scope, deliverables and terms for any engagement are agreed directly with the client before work begins, and those specific terms take precedence over general descriptions on this site." },
+        { "heading": "No Legal or Financial Advice From the Website Alone", "body": "Content on this website, including articles, tools and calculators, is for general informational purposes only and does not constitute legal or financial advice for your specific situation. Formal advice is only given through a direct engagement with AELFC Ltd." },
+        { "heading": "Intellectual Property", "body": "The content, branding and materials on this site belong to AELFC Ltd unless otherwise stated, and may not be reproduced for commercial use without permission." },
+        { "heading": "Limitation of Liability", "body": "AELFC Ltd is not liable for losses arising from reliance on general website content in place of a direct professional engagement, or from third-party tools (such as WhatsApp or Formspree) used to communicate with us." },
+        { "heading": "Governing Law", "body": "These terms are governed by the laws of the Republic of Rwanda." },
+        { "heading": "Changes to These Terms", "body": "We may update these terms from time to time; the current version is always the one published on this page." },
+        { "heading": "Contact Us", "body": "Questions about these terms can be directed to us using the details on our contact page." }
       ]
     }
   }
