@@ -30,6 +30,7 @@
       <a href="#tools">Tools</a>
       <a href="#brochures">Brochures</a>
       <a href="#fees">Fees &amp; Booking</a>
+      <a href="#community">Community</a>
       <a href="#contact">Contact</a>
       <a href="#fees" class="nav-cta">Book a Session</a>
     </nav>
@@ -110,7 +111,7 @@
   <section class="section section-alt" id="founder">
     <div class="container about-inner">
       <div class="about-media">
-        <img src="assets/images/founder-desk.jpg" alt="Anaclet Mugisha working at his desk">
+        <img src="assets/images/founder-profile.jpg" alt="Anaclet Mugisha, Founder of AELFC Ltd">
       </div>
       <div class="about-copy">
         <p class="section-tag">Meet the Founder</p>
@@ -163,6 +164,7 @@
             <li>Legal due diligence</li>
             <li>Legal risk assessment &amp; compliance monitoring</li>
           </ul>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Legal%20Advisory%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
@@ -178,36 +180,49 @@
             <li>Cost reduction &amp; profitability analysis</li>
             <li>Financial restructuring &amp; strategic planning</li>
           </ul>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Financial%20Advisory%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>Accounting &amp; Bookkeeping</h3>
           <p>Day-to-day bookkeeping, financial statement preparation and reporting that keeps your business audit-ready and decision-ready year-round.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Accounting%20%26%20Bookkeeping%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>Tax Consultancy</h3>
           <p>Guidance on corporate income tax, VAT, withholding, district taxes and payroll obligations, so you stay compliant and plan ahead.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Tax%20Consultancy%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>Internal Audit</h3>
           <p>Independent internal and external auditing support to strengthen controls, transparency and financial accountability.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Internal%20Audit%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>Contract Drafting</h3>
           <p>Clear, enforceable contracts and agreements drafted and reviewed to protect your interests before disputes arise.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Contract%20Drafting%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>Debt Recovery</h3>
           <p>Structured, professional debt recovery support paired with the legal documentation to see it through.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Debt%20Recovery%20services." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
         <article class="card">
           <h3>One-on-One Advisory</h3>
           <p>Direct advisory support, listening closely to each client's challenges and providing tailored, professional guidance.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20One-on-One%20Advisory." target="_blank" rel="noopener">Request this service &rarr;</a>
+        </article>
+
+        <article class="card">
+          <h3>Group Training &amp; Speaking Engagements</h3>
+          <p>Workshops, corporate training and speaking engagements on legal, financial and business topics for teams, associations and events.</p>
+          <a class="card-request" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20request%20Group%20Training%20%2F%20a%20Speaking%20Engagement." target="_blank" rel="noopener">Request this service &rarr;</a>
         </article>
 
       </div>
@@ -238,9 +253,45 @@
     <div class="container tools-inner">
       <p class="section-tag light">Resources</p>
       <h2 class="light">Tools</h2>
-      <p class="section-lede light">Practical financial and legal tools, including calculators, templates and guides, to help you plan smarter. Currently in development and launching soon.</p>
+      <p class="section-lede light">Practical financial tools to help you plan smarter, plus templates and guides currently in development.</p>
+
+      <div class="calc-grid">
+        <div class="calc-card">
+          <h3>Compound Interest Calculator</h3>
+          <label>Principal amount
+            <input type="number" id="ci-principal" value="1000000" min="0">
+          </label>
+          <label>Annual interest rate (%)
+            <input type="number" id="ci-rate" value="10" min="0" step="0.1">
+          </label>
+          <label>Number of years
+            <input type="number" id="ci-years" value="5" min="0" step="1">
+          </label>
+          <label>Compounding frequency per year
+            <input type="number" id="ci-freq" value="12" min="1" step="1">
+          </label>
+          <button type="button" class="btn btn-gold-small" id="ci-calc">Calculate</button>
+          <p class="calc-result" id="ci-result"></p>
+        </div>
+
+        <div class="calc-card">
+          <h3>Loan Repayment Calculator</h3>
+          <label>Loan amount
+            <input type="number" id="lr-amount" value="5000000" min="0">
+          </label>
+          <label>Annual interest rate (%)
+            <input type="number" id="lr-rate" value="16" min="0" step="0.1">
+          </label>
+          <label>Loan term (months)
+            <input type="number" id="lr-months" value="24" min="1" step="1">
+          </label>
+          <button type="button" class="btn btn-gold-small" id="lr-calc">Calculate</button>
+          <p class="calc-result" id="lr-result"></p>
+        </div>
+      </div>
+
+      <p class="section-tag light" style="margin-top:56px">More on the way</p>
       <div class="tools-list">
-        <span>Financial Calculators</span>
         <span>Contract &amp; Legal Templates</span>
         <span>Tax Planning Guides</span>
         <span>Business Formalization Checklists</span>
@@ -320,11 +371,66 @@
           <a class="btn btn-outline-small" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20enroll%20in%20the%203-Month%20Online%20Coaching%20program." target="_blank" rel="noopener">Book via WhatsApp</a>
         </div>
       </div>
+
+      <div class="booking-form-wrap">
+        <p class="section-tag center">Prefer a Form?</p>
+        <h3 class="center">Request a Booking</h3>
+        <p class="section-lede center">Fill this in and we'll follow up by email &mdash; useful if you'd rather not use WhatsApp, or if someone else on our team needs to see your request.</p>
+        <form class="booking-form" id="booking-form">
+          <label>
+            Full name
+            <input type="text" name="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" required>
+          </label>
+          <label>
+            Phone number
+            <input type="tel" name="phone" required>
+          </label>
+          <label>
+            Service you'd like to book
+            <select name="service" required>
+              <option value="60 Minutes Coaching">60 Minutes Coaching</option>
+              <option value="VIP Coaching">VIP Coaching</option>
+              <option value="Mediation Advisory">Mediation Advisory</option>
+              <option value="Legal Opinion / Advisory">Legal Opinion / Advisory</option>
+              <option value="Financial Service Advisory">Financial Service Advisory</option>
+              <option value="Online Coaching Registration">Online Coaching Registration</option>
+              <option value="3-Month Online Coaching">3-Month Online Coaching</option>
+              <option value="Other / not sure yet">Other / not sure yet</option>
+            </select>
+          </label>
+          <label>
+            What do you do? (career / profession)
+            <input type="text" name="profession" required>
+          </label>
+          <label class="full-width">
+            What do you hope to gain from this session?
+            <textarea name="goal" rows="3" required></textarea>
+          </label>
+          <button type="submit" class="btn btn-navy full-width">Submit Booking Request</button>
+          <p class="form-note full-width" id="booking-note"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT OUR WORK -->
+  <section class="section section-alt" id="community">
+    <div class="container">
+      <p class="section-tag center">Beyond the Balance Sheet</p>
+      <h2 class="center">Support Our Work</h2>
+      <p class="section-lede center">Part of our mission is giving back to the next generation of legal and financial professionals. We offer internship placements for law and accounting students, giving them real-world experience alongside our team. If you'd like to partner with us or support this work, we'd love to hear from you.</p>
+      <div class="center" style="margin-top:32px">
+        <a class="btn btn-navy" href="https://wa.me/250788236356?text=Hi%20AELFC%2C%20I%27d%20like%20to%20learn%20more%20about%20partnering%20with%20you%20or%20supporting%20your%20internship%20program." target="_blank" rel="noopener">Partner With Us</a>
+      </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section class="section section-alt" id="contact">
+  <section class="section" id="contact">
     <div class="container contact-inner">
       <div>
         <p class="section-tag">Get in Touch</p>
@@ -376,7 +482,7 @@
       <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem">
       <div>
         <strong>Anaclet's Experts Legal &amp; Financial Consultancy Ltd</strong>
-        <p>Expert Solutions | Client-Focused | Trusted in Rwanda</p>
+        <p>Expert Solutions | Client-Focused | All-in-One Trusted Partner</p>
       </div>
     </div>
     <nav class="footer-nav">
@@ -386,7 +492,12 @@
       <a href="#tools">Tools</a>
       <a href="#brochures">Brochures</a>
       <a href="#fees">Fees &amp; Booking</a>
+      <a href="#community">Community</a>
       <a href="#contact">Contact</a>
+    </nav>
+    <nav class="footer-legal">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="refund-policy.html">Refund Policy</a>
     </nav>
     <p class="copyright">&copy; <span id="year"></span> AELFC Ltd. All rights reserved.</p>
   </div>

@@ -241,8 +241,18 @@ ul { padding: 0; margin: 0; list-style: none; }
   padding: 28px;
   box-shadow: var(--shadow);
   border-top: 3px solid var(--gold);
+  display: flex;
+  flex-direction: column;
 }
 .card h3 { font-size: 1.1rem; }
+.card-request {
+  margin-top: auto;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--gold);
+}
+.card-request:hover { color: var(--navy); }
 .card ul li {
   position: relative;
   padding-left: 18px;
@@ -282,6 +292,50 @@ ul { padding: 0; margin: 0; list-style: none; }
 
 /* ---------- Tools ---------- */
 .tools-inner { text-align: center; }
+.calc-grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+.calc-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+.calc-card h3 { color: var(--white); font-size: 1.05rem; margin-bottom: 20px; }
+.calc-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 14px;
+}
+.calc-card input {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 10px 12px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  background: rgba(255,255,255,0.95);
+  color: var(--ink);
+}
+.calc-card input:focus { outline: none; border-color: var(--gold); }
+.calc-result {
+  margin: 16px 0 0;
+  padding: 14px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: var(--white);
+  min-height: 1.4em;
+  line-height: 1.5;
+}
+.calc-result strong { color: var(--gold-light); }
 .tools-list {
   margin-top: 32px;
   display: flex;
@@ -336,6 +390,46 @@ ul { padding: 0; margin: 0; list-style: none; }
   color: var(--navy);
   margin-bottom: 20px;
 }
+
+.booking-form-wrap {
+  margin-top: 72px;
+  padding-top: 56px;
+  border-top: 1px solid var(--border);
+}
+.booking-form {
+  max-width: 760px;
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+.booking-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--white);
+  resize: vertical;
+}
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus { outline: none; border-color: var(--gold); }
+.booking-form .full-width { grid-column: 1 / -1; }
 
 /* ---------- Contact ---------- */
 .contact-inner {
@@ -436,13 +530,25 @@ ul { padding: 0; margin: 0; list-style: none; }
 .footer-nav { display: flex; gap: 20px; flex-wrap: wrap; }
 .footer-nav a { font-size: 0.9rem; color: rgba(255,255,255,0.75); }
 .footer-nav a:hover { color: var(--gold-light); }
-.copyright { text-align: center; font-size: 0.8rem; margin: 20px 0 0; color: rgba(255,255,255,0.5); }
+.footer-legal { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+.footer-legal a { font-size: 0.8rem; color: rgba(255,255,255,0.55); }
+.footer-legal a:hover { color: var(--gold-light); }
+.copyright { text-align: center; font-size: 0.8rem; margin: 10px 0 0; color: rgba(255,255,255,0.5); }
+
+/* ---------- Legal pages ---------- */
+.legal-content { max-width: 720px; margin: 0 auto; }
+.legal-content h1 { font-size: 2rem; margin-top: 0.3em; }
+.legal-content h2 { font-size: 1.2rem; margin-top: 1.6em; }
+.legal-updated { color: var(--gray); font-size: 0.85rem; margin-bottom: 2em; }
+.legal-content a { color: var(--gold); font-weight: 600; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
   .about-media { order: -1; max-width: 360px; margin: 0 auto; }
   .section { padding: 64px 0; }
+  .booking-form { grid-template-columns: 1fr; }
+  .booking-form .full-width { grid-column: 1; }
 }
 
 @media (max-width: 760px) {
