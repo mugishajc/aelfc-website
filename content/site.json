@@ -21,8 +21,12 @@
     "lede": "Expert Legal. Smart Finance. Peaceful Solutions. Where Law, Finance & Mediation meet excellence, serving Rwanda with dedication and integrity.",
     "primaryCtaLabel": "Book a Consultation",
     "secondaryCtaLabel": "Explore Our Services",
-    "image": "assets/images/founder-hero-teal.jpg",
-    "imageAlt": "Anaclet Mugisha, Founder of Anaclet's Experts (AELFC Ltd)",
+    "images": [
+      { "src": "assets/images/founder-hero-teal.jpg", "alt": "Anaclet Mugisha, Founder of Anaclet's Experts (AELFC Ltd)" },
+      { "src": "assets/images/founder-hero-navy.jpg", "alt": "Anaclet Mugisha, Founder of AELFC Ltd" },
+      { "src": "assets/images/founder-profile.jpg", "alt": "Anaclet Mugisha, Founder of AELFC Ltd" },
+      { "src": "assets/images/founder-desk.jpg", "alt": "Anaclet Mugisha at work, Founder of AELFC Ltd" }
+    ],
     "stats": [
       { "value": "8+", "label": "Service Lines" },
       { "value": "8", "label": "Mediation Practice Areas" },

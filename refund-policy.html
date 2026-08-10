@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Refund Policy | AELFC Ltd</title>
+<meta name="description" content="Refund Policy for Anaclet's Experts Legal & Financial Consultancy Ltd (AELFC Ltd).">
 <link rel="icon" type="image/png" href="assets/images/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,7 @@
 </head>
 <body data-page="refund">
 
-<header class="site-header">
+<header class="site-header" id="header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
       <img src="assets/images/logo-mark.jpg" alt="Anaclet's Experts emblem" class="brand-mark">
@@ -21,9 +22,22 @@
         <small>Anaclet's Experts Legal &amp; Financial Consultancy</small>
       </span>
     </a>
-    <nav class="main-nav">
-      <a href="index.html">Back to Home</a>
+
+    <nav class="main-nav" id="main-nav">
+      <a href="about.html" data-nav="about">About</a>
+      <a href="services.html" data-nav="services">Services</a>
+      <a href="mediation.html" data-nav="mediation">Mediation</a>
+      <a href="tools.html" data-nav="tools">Tools</a>
+      <a href="brochures.html" data-nav="brochures">Brochures</a>
+      <a href="fees.html" data-nav="fees">Fees &amp; Booking</a>
+      <a href="community.html" data-nav="community">Community</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+      <a href="fees.html" class="nav-cta">Book a Session</a>
     </nav>
+
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
@@ -36,6 +50,16 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-brand" id="footer-brand"></div>
+    <nav class="footer-nav">
+      <a href="about.html" data-nav="about">About</a>
+      <a href="services.html" data-nav="services">Services</a>
+      <a href="mediation.html" data-nav="mediation">Mediation</a>
+      <a href="tools.html" data-nav="tools">Tools</a>
+      <a href="brochures.html" data-nav="brochures">Brochures</a>
+      <a href="fees.html" data-nav="fees">Fees &amp; Booking</a>
+      <a href="community.html" data-nav="community">Community</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+    </nav>
     <nav class="footer-legal">
       <a href="privacy-policy.html">Privacy Policy</a>
       <a href="refund-policy.html">Refund Policy</a>
@@ -45,6 +69,6 @@
 </footer>
 
 <script src="js/render.js"></script>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/main.js"></script>
 </body>
 </html>

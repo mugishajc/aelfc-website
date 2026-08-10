@@ -41,25 +41,16 @@ async function handleFormspreeSubmit(form, noteEl, successMessage) {
   }
 }
 
-// Contact form is static in the HTML, safe to wire immediately
-const contactForm = document.getElementById('contact-form');
-const formNote = document.getElementById('form-note');
-
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  handleFormspreeSubmit(contactForm, formNote, "Thanks — your message is on its way. We'll get back to you soon.");
-});
-
-// Booking form + calculators live inside content rendered from JSON by render.js,
-// so they only exist once that finishes — wire them up when it signals completion.
+// The contact form and calculators only exist once render.js has built the
+// page's content, so wire them up when it signals completion.
 document.addEventListener('content:rendered', () => {
-  const bookingForm = document.getElementById('booking-form');
-  const bookingNote = document.getElementById('booking-note');
+  const contactForm = document.getElementById('contact-form');
+  const formNote = document.getElementById('form-note');
 
-  if (bookingForm) {
-    bookingForm.addEventListener('submit', (e) => {
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      handleFormspreeSubmit(bookingForm, bookingNote, "Thanks — your booking request is on its way. We'll follow up shortly.");
+      handleFormspreeSubmit(contactForm, formNote, "Thanks — your message is on its way. We'll get back to you soon.");
     });
   }
 

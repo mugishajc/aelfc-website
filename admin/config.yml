@@ -43,8 +43,10 @@ collections:
               { label: "Lede Paragraph", name: "lede", widget: "text" },
               { label: "Primary Button Label", name: "primaryCtaLabel", widget: "string" },
               { label: "Secondary Button Label", name: "secondaryCtaLabel", widget: "string" },
-              { label: "Hero Image", name: "image", widget: "image" },
-              { label: "Hero Image Alt Text", name: "imageAlt", widget: "string" },
+              { label: "Hero Photos (rotates automatically if more than one)", name: "images", widget: "list", fields: [
+                  { label: "Photo", name: "src", widget: "image" },
+                  { label: "Alt Text", name: "alt", widget: "string" }
+                ]},
               { label: "Stats", name: "stats", widget: "list", fields: [
                   { label: "Value", name: "value", widget: "string" },
                   { label: "Label", name: "label", widget: "string" }
