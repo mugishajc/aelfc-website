@@ -5,8 +5,8 @@ backend:
 media_folder: "assets/images/uploads"
 public_folder: "assets/images/uploads"
 
-site_url: https://mugishajc.github.io/aelfc-website/
-display_url: https://mugishajc.github.io/aelfc-website/
+site_url: https://www.anacletsexpert.com/
+display_url: https://www.anacletsexpert.com/
 
 collections:
   - name: "site"
