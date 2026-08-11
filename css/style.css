@@ -98,7 +98,9 @@ ul { padding: 0; margin: 0; list-style: none; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 76px;
+  min-height: 76px;
+  padding: 10px 0;
+  gap: 16px;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-mark { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
@@ -136,7 +138,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 .hero { padding: 64px 0 96px; background: linear-gradient(180deg, var(--cream) 0%, var(--white) 100%); }
 .hero-inner {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   gap: 48px;
   align-items: center;
 }
@@ -236,7 +238,7 @@ ul { padding: 0; margin: 0; list-style: none; }
 
 .about-inner {
   display: grid;
-  grid-template-columns: 0.85fr 1.15fr;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
   gap: 56px;
   align-items: start;
 }
@@ -457,12 +459,13 @@ ul { padding: 0; margin: 0; list-style: none; }
   max-width: 760px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 20px;
   background: var(--cream);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 32px;
+  min-width: 0;
 }
 .full-form label {
   display: flex;
@@ -471,6 +474,7 @@ ul { padding: 0; margin: 0; list-style: none; }
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--navy);
+  min-width: 0;
 }
 .full-form input,
 .full-form select,
@@ -482,6 +486,9 @@ ul { padding: 0; margin: 0; list-style: none; }
   border-radius: 8px;
   background: var(--white);
   resize: vertical;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
 }
 .full-form input:focus,
 .full-form select:focus,
@@ -491,14 +498,16 @@ ul { padding: 0; margin: 0; list-style: none; }
 /* ---------- Contact ---------- */
 .contact-inner {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 56px;
   align-items: start;
 }
 .contact-list { margin-top: 24px; }
 .contact-list li {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
+  gap: 4px 16px;
   padding: 16px 0;
   border-bottom: 1px solid var(--border);
 }
@@ -513,28 +522,27 @@ ul { padding: 0; margin: 0; list-style: none; }
   gap: 24px;
 }
 .brochure-card {
-  position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
   border: 1px solid var(--border);
+  background: var(--white);
 }
-.brochure-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; transition: transform 0.25s ease; }
-.brochure-card:hover img { transform: scale(1.04); }
+.brochure-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
 .brochure-download {
-  position: absolute;
-  left: 12px;
-  right: 12px;
-  bottom: 12px;
+  display: block;
   text-align: center;
-  background: rgba(4, 66, 79, 0.92);
+  background: var(--navy);
   color: var(--white);
   font-weight: 600;
   font-size: 0.85rem;
-  padding: 10px;
+  padding: 12px;
+  margin: 12px;
   border-radius: 100px;
 }
+.brochure-download:hover { background: var(--navy-dark); }
 .form-note { font-size: 0.85rem; color: var(--gold); margin: 0; min-height: 1.2em; }
 
 /* ---------- Certifications ---------- */
@@ -605,17 +613,17 @@ ul { padding: 0; margin: 0; list-style: none; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
-  .hero-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; }
+  .hero-inner, .about-inner, .contact-inner { grid-template-columns: minmax(0, 1fr); }
   .about-media { order: -1; max-width: 360px; margin: 0 auto; }
   .section { padding: 64px 0; }
-  .full-form { grid-template-columns: 1fr; }
+  .full-form { grid-template-columns: minmax(0, 1fr); }
   .full-form .full-width { grid-column: 1; }
 }
 
 @media (max-width: 760px) {
   .main-nav {
-    position: fixed;
-    top: 76px;
+    position: absolute;
+    top: 100%;
     left: 0;
     right: 0;
     background: var(--white);

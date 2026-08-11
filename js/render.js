@@ -217,10 +217,10 @@ function renderBrochures(data) {
     <p class="section-lede center">${esc(b.lede)}</p>
     <div class="brochure-grid">
       ${b.items.map((item) => `
-        <a class="brochure-card" href="${esc(item.image)}" download>
+        <div class="brochure-card">
           <img src="${esc(item.image)}" alt="${esc(item.alt)}">
-          <span class="brochure-download">Download</span>
-        </a>
+          <a class="brochure-download" href="${esc(item.image)}" download>Download</a>
+        </div>
       `).join('')}
     </div>
   `;
