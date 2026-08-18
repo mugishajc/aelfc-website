@@ -3,6 +3,13 @@
     "tag": "Credentials",
     "heading": "Certifications & Registrations",
     "lede": "Official certificates and registrations backing our work. Add yours here as they become available.",
-    "items": []
+    "items": [
+      {
+        "file": "assets/images/uploads/data-controller.jpg",
+        "title": "DATA CONTROLLER CERTIFICATE",
+        "image": "assets/images/uploads/data-controller11.jpg",
+        "description": "DATA CONTROLLER CERTIFICATE"
+      }
+    ]
   }
 }
