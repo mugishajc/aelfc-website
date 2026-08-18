@@ -1,11 +1,10 @@
 {
   "hero": {
+    "headlineHighlight": "Legal ,mediation & Financial",
+    "primaryCtaLabel": "Book a Consultation",
+    "headlineEnd": "Solutions.",
     "eyebrow": "Professional · Trustworthy · Client-Focused",
     "headlineStart": "Your Trusted Partner in",
-    "headlineHighlight": "Legal & Financial",
-    "headlineEnd": "Solutions.",
-    "lede": "Expert Legal. Smart Finance. Peaceful Solutions. Where Law, Finance & Mediation meet excellence, serving Rwanda with dedication and integrity.",
-    "primaryCtaLabel": "Book a Consultation",
     "secondaryCtaLabel": "Explore Our Services",
     "images": [
       {
@@ -17,14 +16,19 @@
         "alt": "Anaclet Mugisha, Founder of AELFC Ltd"
       },
       {
-        "src": "assets/images/founder-profile.jpg",
+        "src": "assets/images/uploads/aelfc-brochure-trusted-partner.jpg",
         "alt": "Anaclet Mugisha, Founder of AELFC Ltd"
       },
       {
         "src": "assets/images/founder-desk.jpg",
         "alt": "Anaclet Mugisha at work, Founder of AELFC Ltd"
+      },
+      {
+        "src": "assets/images/uploads/consultancy.jpg-1-.jpeg",
+        "alt": "Anaclet Mugisha at work, Founder of AELFC Ltd"
       }
     ],
+    "lede": "Expert Legal. Smart Finance. Peaceful Solutions. Where Law, Finance & Mediation meet excellence, serving Rwanda with dedication and integrity.",
     "stats": [
       {
         "value": "8+",
