@@ -281,6 +281,78 @@ function renderFees(data) {
   `;
 }
 
+function renderResources(data) {
+  if (!document.getElementById('resources-content')) return;
+  const r = data.resources;
+  const n = r.newsletter;
+  document.getElementById('resources-content').innerHTML = `
+    <p class="section-tag center">${esc(r.tag)}</p>
+    <h2 class="center">${esc(r.heading)}</h2>
+    <p class="section-lede center">${esc(r.lede)}</p>
+    <div class="newsletter-card">
+      <h3>${esc(n.heading)}</h3>
+      <p>${esc(n.text)}</p>
+      <form class="newsletter-form" id="newsletter-form" action="https://formspree.io/f/xvkpkwbp" method="POST">
+        <input type="hidden" name="_subject" value="New newsletter signup">
+        <input type="email" name="email" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn-gold">${esc(n.buttonLabel)}</button>
+      </form>
+      <p class="form-note" id="newsletter-note"></p>
+    </div>
+    <p class="section-lede center" style="margin-top:24px">Looking for our calculators? <a href="tools.html">Visit the Tools page</a>.</p>
+  `;
+}
+
+function renderResourceBlog(data) {
+  const container = document.getElementById('resources-blog-content');
+  if (!container) return;
+  const b = data.resources.blog;
+  const section = container.closest('section');
+  if (!b.items || !b.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(b.tag)}</p>
+    <h2 class="center">${esc(b.heading)}</h2>
+    <div class="blog-grid">
+      ${b.items.map((post) => `
+        <a class="blog-card" href="${esc(post.link)}" target="_blank" rel="noopener">
+          ${post.image ? `<img src="${esc(post.image)}" alt="${esc(post.title)}">` : ''}
+          <div class="blog-card-body">
+            ${post.date ? `<span class="blog-date">${esc(post.date)}</span>` : ''}
+            <h3>${esc(post.title)}</h3>
+            <p>${esc(post.excerpt)}</p>
+          </div>
+        </a>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderResourceVideos(data) {
+  const container = document.getElementById('resources-videos-content');
+  if (!container) return;
+  const v = data.resources.videos;
+  const section = container.closest('section');
+  if (!v.items || !v.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(v.tag)}</p>
+    <h2 class="center">${esc(v.heading)}</h2>
+    <div class="video-grid">
+      ${v.items.map((item) => `
+        <div class="video-card">
+          <div class="video-embed"><iframe src="${esc(item.embedUrl)}" title="${esc(item.title)}" frameborder="0" allowfullscreen loading="lazy"></iframe></div>
+          <h3>${esc(item.title)}</h3>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderPartners(data) {
   const container = document.getElementById('partners-content');
   if (!container) return;
@@ -464,8 +536,8 @@ function highlightActiveNav() {
 async function renderSite() {
   const files = [
     'brand', 'hero', 'about', 'founder', 'services', 'mediation', 'tools',
-    'brochures', 'certifications', 'fees', 'partners', 'donate', 'community',
-    'contact', 'footer', 'legal'
+    'brochures', 'certifications', 'fees', 'resources', 'partners', 'donate',
+    'community', 'contact', 'footer', 'legal'
   ];
   const parts = await Promise.all(files.map(async (name) => {
     const response = await fetch(`content/${name}.json`);
@@ -484,6 +556,9 @@ async function renderSite() {
   renderBrochures(data);
   renderCertifications(data);
   renderFees(data);
+  renderResources(data);
+  renderResourceBlog(data);
+  renderResourceVideos(data);
   renderPartners(data);
   renderDonate(data);
   renderCommunity(data);

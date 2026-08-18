@@ -54,6 +54,15 @@ document.addEventListener('content:rendered', () => {
     });
   }
 
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterNote = document.getElementById('newsletter-note');
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleFormspreeSubmit(newsletterForm, newsletterNote, "Thanks — you're subscribed!");
+    });
+  }
+
   const rwf = (n) => new Intl.NumberFormat('en-RW', { maximumFractionDigits: 0 }).format(Math.round(n));
 
   const ciCalc = document.getElementById('ci-calc');

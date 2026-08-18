@@ -1,0 +1,22 @@
+{
+  "resources": {
+    "tag": "Resources",
+    "heading": "Guides, Videos & Updates",
+    "lede": "Newsletter updates, articles and short videos to help you stay ahead — plus our free financial calculators.",
+    "newsletter": {
+      "heading": "Subscribe to Our Newsletter",
+      "text": "Get legal, financial and business insights delivered straight to your inbox.",
+      "buttonLabel": "Subscribe"
+    },
+    "blog": {
+      "tag": "From the Blog",
+      "heading": "Latest Articles",
+      "items": []
+    },
+    "videos": {
+      "tag": "Watch & Learn",
+      "heading": "Videos",
+      "items": []
+    }
+  }
+}

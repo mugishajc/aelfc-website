@@ -182,6 +182,40 @@ collections:
               { label: "Booking Form Lede", name: "formLede", widget: "text" }
             ]}
 
+      - name: "resources"
+        label: "Resources Section (Newsletter, Blog & Videos)"
+        file: "content/resources.json"
+        fields:
+          - { label: "Resources", name: "resources", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Newsletter", name: "newsletter", widget: "object", fields: [
+                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: "Text", name: "text", widget: "text" },
+                  { label: "Button Label", name: "buttonLabel", widget: "string" }
+                ]},
+              { label: "Blog", name: "blog", widget: "object", fields: [
+                  { label: "Tag", name: "tag", widget: "string" },
+                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: "Posts (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                      { label: "Title", name: "title", widget: "string" },
+                      { label: "Date", name: "date", widget: "string", required: false },
+                      { label: "Image (optional)", name: "image", widget: "image", required: false },
+                      { label: "Excerpt", name: "excerpt", widget: "text" },
+                      { label: "Link (where the full post lives — your own page, LinkedIn, Medium, etc.)", name: "link", widget: "string" }
+                    ]}
+                ]},
+              { label: "Videos", name: "videos", widget: "object", fields: [
+                  { label: "Tag", name: "tag", widget: "string" },
+                  { label: "Heading", name: "heading", widget: "string" },
+                  { label: "Videos (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                      { label: "Title", name: "title", widget: "string" },
+                      { label: "YouTube/Vimeo Embed URL (e.g. https://www.youtube.com/embed/VIDEO_ID)", name: "embedUrl", widget: "string" }
+                    ]}
+                ]}
+            ]}
+
       - name: "partners"
         label: "Trusted By / Partners"
         file: "content/partners.json"
