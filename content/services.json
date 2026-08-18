@@ -1,0 +1,82 @@
+{
+  "services": {
+    "tag": "What We Do",
+    "heading": "Comprehensive Professional Solutions for Your Business Growth",
+    "items": [
+      {
+        "title": "Legal Advisory",
+        "bullets": [
+          "Legal consultation and opinions",
+          "Contract drafting, review & negotiation",
+          "Business registration & regulatory compliance",
+          "Corporate governance advisory",
+          "Employment and labor law advice",
+          "Tax and commercial law advisory",
+          "Debt recovery and legal documentation",
+          "Legal due diligence",
+          "Legal risk assessment & compliance monitoring"
+        ],
+        "description": "",
+        "requestText": "Legal Advisory services"
+      },
+      {
+        "title": "Financial Advisory",
+        "bullets": [
+          "Financial planning and budgeting",
+          "Investment and business advisory",
+          "Cash flow management",
+          "Financial analysis and reporting",
+          "Business valuation",
+          "Fund and grant financial management",
+          "Financial risk assessment",
+          "Cost reduction & profitability analysis",
+          "Financial restructuring & strategic planning"
+        ],
+        "description": "",
+        "requestText": "Financial Advisory services"
+      },
+      {
+        "title": "Accounting & Bookkeeping",
+        "bullets": [],
+        "description": "Day-to-day bookkeeping, financial statement preparation and reporting that keeps your business audit-ready and decision-ready year-round.",
+        "requestText": "Accounting & Bookkeeping services"
+      },
+      {
+        "title": "Tax Consultancy",
+        "bullets": [],
+        "description": "Guidance on corporate income tax, VAT, withholding, district taxes and payroll obligations, so you stay compliant and plan ahead.",
+        "requestText": "Tax Consultancy services"
+      },
+      {
+        "title": "Internal Audit",
+        "bullets": [],
+        "description": "Independent internal and external auditing support to strengthen controls, transparency and financial accountability.",
+        "requestText": "Internal Audit services"
+      },
+      {
+        "title": "Contract Drafting",
+        "bullets": [],
+        "description": "Clear, enforceable contracts and agreements drafted and reviewed to protect your interests before disputes arise.",
+        "requestText": "Contract Drafting services"
+      },
+      {
+        "title": "Debt Recovery",
+        "bullets": [],
+        "description": "Structured, professional debt recovery support paired with the legal documentation to see it through.",
+        "requestText": "Debt Recovery services"
+      },
+      {
+        "title": "One-on-One Advisory",
+        "bullets": [],
+        "description": "Direct advisory support, listening closely to each client's challenges and providing tailored, professional guidance.",
+        "requestText": "One-on-One Advisory"
+      },
+      {
+        "title": "Group Training & Speaking Engagements",
+        "bullets": [],
+        "description": "Workshops, corporate training and speaking engagements on legal, financial and business topics for teams, associations and events.",
+        "requestText": "Group Training / a Speaking Engagement"
+      }
+    ]
+  }
+}

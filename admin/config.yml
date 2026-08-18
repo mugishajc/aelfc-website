@@ -14,7 +14,7 @@ collections:
     files:
       - name: "brand"
         label: "Brand & Contact Info"
-        file: "content/site.json"
+        file: "content/brand.json"
         fields:
           - { label: "Brand", name: "brand", widget: "object", fields: [
               { label: "Short Name (e.g. AELFC)", name: "name", widget: "string" },
@@ -41,7 +41,7 @@ collections:
 
       - name: "hero"
         label: "Hero Section"
-        file: "content/site.json"
+        file: "content/hero.json"
         fields:
           - { label: "Hero", name: "hero", widget: "object", fields: [
               { label: "Eyebrow (small text above headline)", name: "eyebrow", widget: "string" },
@@ -63,7 +63,7 @@ collections:
 
       - name: "about"
         label: "About Us Section"
-        file: "content/site.json"
+        file: "content/about.json"
         fields:
           - { label: "About", name: "about", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -79,7 +79,7 @@ collections:
 
       - name: "founder"
         label: "Meet the Founder Section"
-        file: "content/site.json"
+        file: "content/founder.json"
         fields:
           - { label: "Founder", name: "founder", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -95,7 +95,7 @@ collections:
 
       - name: "services"
         label: "Services Section"
-        file: "content/site.json"
+        file: "content/services.json"
         fields:
           - { label: "Services", name: "services", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -110,7 +110,7 @@ collections:
 
       - name: "mediation"
         label: "Mediation Section"
-        file: "content/site.json"
+        file: "content/mediation.json"
         fields:
           - { label: "Mediation", name: "mediation", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -121,7 +121,7 @@ collections:
 
       - name: "tools"
         label: "Tools Section"
-        file: "content/site.json"
+        file: "content/tools.json"
         fields:
           - { label: "Tools", name: "tools", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -133,7 +133,7 @@ collections:
 
       - name: "brochures"
         label: "Brochures Section"
-        file: "content/site.json"
+        file: "content/brochures.json"
         fields:
           - { label: "Brochures", name: "brochures", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -147,7 +147,7 @@ collections:
 
       - name: "certifications"
         label: "Certifications & Registrations"
-        file: "content/site.json"
+        file: "content/certifications.json"
         fields:
           - { label: "Certifications", name: "certifications", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -163,7 +163,7 @@ collections:
 
       - name: "fees"
         label: "Fees & Booking Section"
-        file: "content/site.json"
+        file: "content/fees.json"
         fields:
           - { label: "Fees", name: "fees", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -184,7 +184,7 @@ collections:
 
       - name: "community"
         label: "Support Our Work Section"
-        file: "content/site.json"
+        file: "content/community.json"
         fields:
           - { label: "Community", name: "community", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -196,7 +196,7 @@ collections:
 
       - name: "contact"
         label: "Contact Section"
-        file: "content/site.json"
+        file: "content/contact.json"
         fields:
           - { label: "Contact", name: "contact", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
@@ -206,7 +206,7 @@ collections:
 
       - name: "footer"
         label: "Footer"
-        file: "content/site.json"
+        file: "content/footer.json"
         fields:
           - { label: "Footer", name: "footer", widget: "object", fields: [
               { label: "Company Name", name: "companyName", widget: "string" },
@@ -216,7 +216,7 @@ collections:
 
       - name: "legal"
         label: "Privacy, Refund & Terms Pages"
-        file: "content/site.json"
+        file: "content/legal.json"
         fields:
           - { label: "Legal Pages", name: "legal", widget: "object", fields: [
               { label: "Privacy Policy", name: "privacy", widget: "object", fields: [

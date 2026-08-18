@@ -1,0 +1,29 @@
+{
+  "founder": {
+    "tag": "Meet the Founder",
+    "name": "Anaclet Mugisha",
+    "role": "Founder & Managing Director | Legal, Financial & Business Consultant",
+    "image": "assets/images/founder-profile.jpg",
+    "imageAlt": "Anaclet Mugisha, Founder of AELFC Ltd",
+    "paragraphs": [
+      "Anaclet Mugisha is the Founder and Managing Director of AELFC Ltd, a multidisciplinary consultancy firm providing professional legal, financial, business and mediation services in Rwanda. He is a dedicated legal and financial professional with expertise in corporate governance, accounting, auditing, taxation, financial management, compliance and alternative dispute resolution.",
+      "He holds a Bachelor of Science in Accounting from the University of Rwanda and is a Certified Public Finance Manager (CPFM) and a Bachelor of Laws (LL.B.). He is also pursuing a Master of Business Administration (MBA) in Finance at the University of Lay Adventists of Kigali (UNILAK), while advancing toward the Certified Public Accountant (CPA) qualification at the Intermediate Level.",
+      "Throughout his career, Anaclet has served in key positions including Chief Accountant, Internal Auditor, Financial Consultant and Accounting Professional, supporting government institutions, private companies and non-governmental organizations. He also leads professional training and capacity-building initiatives in accounting, finance, taxation, auditing, legal practice, entrepreneurship and business management."
+    ],
+    "expertise": [
+      "Legal Advisory & Contract Drafting",
+      "Corporate Governance & Compliance",
+      "Accounting & Bookkeeping",
+      "Financial Reporting & Analysis",
+      "Tax Consultancy & Compliance",
+      "Internal & External Audit",
+      "Risk Management & Internal Controls",
+      "Financial Advisory",
+      "Business & Management Consultancy",
+      "Mediation & ADR",
+      "Research, Training & Capacity Building"
+    ],
+    "quote": "I believe that sound legal guidance, strong financial management, and ethical leadership are the foundation of sustainable organizations. My mission is to help clients make informed decisions, manage risks effectively, and achieve long-term success.",
+    "ctaLabel": "Get in Touch"
+  }
+}

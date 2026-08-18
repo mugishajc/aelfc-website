@@ -1,0 +1,13 @@
+{
+  "tools": {
+    "tag": "Resources",
+    "heading": "Tools",
+    "lede": "Practical financial tools to help you plan smarter, plus templates and guides currently in development.",
+    "comingSoonLabel": "More on the way",
+    "comingSoon": [
+      "Contract & Legal Templates",
+      "Tax Planning Guides",
+      "Business Formalization Checklists"
+    ]
+  }
+}

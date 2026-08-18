@@ -1,4 +1,4 @@
-// Renders each page from content/site.json so all text/content is CMS-editable.
+// Renders each page from the per-section JSON files in content/ so all text/content is CMS-editable.
 // Structure (section wrappers, ids, classes) stays fixed; only inner content is data-driven.
 // Every page includes this same script — each render*() function only acts if its
 // target container exists on the current page, so one file serves every page.
@@ -422,8 +422,15 @@ function highlightActiveNav() {
 }
 
 async function renderSite() {
-  const response = await fetch('content/site.json');
-  const data = await response.json();
+  const files = [
+    'brand', 'hero', 'about', 'founder', 'services', 'mediation', 'tools',
+    'brochures', 'certifications', 'fees', 'community', 'contact', 'footer', 'legal'
+  ];
+  const parts = await Promise.all(files.map(async (name) => {
+    const response = await fetch(`content/${name}.json`);
+    return response.json();
+  }));
+  const data = Object.assign({}, ...parts);
 
   renderBrandText(data);
   renderHero(data);

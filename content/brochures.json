@@ -1,0 +1,25 @@
+{
+  "brochures": {
+    "tag": "Take Us With You",
+    "heading": "Download Our Brochures",
+    "lede": "A quick look at who we are and what we offer. Save a copy or share it with someone who needs it.",
+    "items": [
+      {
+        "image": "assets/images/brochures/aelfc-brochure-expert-advice.jpg",
+        "alt": "Anaclet's Experts brochure — Expert Advice, Tailored Solutions"
+      },
+      {
+        "image": "assets/images/brochures/aelfc-brochure-services-overview.jpg",
+        "alt": "Anaclet's Experts brochure — services overview"
+      },
+      {
+        "image": "assets/images/brochures/aelfc-brochure-trusted-partner.jpg",
+        "alt": "AELFC Ltd brochure — Your Trusted Partner in Legal & Financial Solutions"
+      },
+      {
+        "image": "assets/images/brochures/aelfc-brochure-business-growth.jpg",
+        "alt": "AELFC Ltd brochure — Comprehensive Professional Solutions for Your Business Growth"
+      }
+    ]
+  }
+}

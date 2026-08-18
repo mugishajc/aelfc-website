@@ -1,0 +1,61 @@
+{
+  "fees": {
+    "tag": "Book a Session",
+    "heading": "Fees & Advisory Booking",
+    "lede": "Straightforward pricing for direct advisory time with AELFC Ltd. Reach out via WhatsApp or email to confirm a slot.",
+    "items": [
+      {
+        "title": "60 Minutes Coaching",
+        "price": "$50",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to book a 60 Minutes Coaching session."
+      },
+      {
+        "title": "VIP Coaching",
+        "price": "$100",
+        "featured": true,
+        "badge": "Most Comprehensive",
+        "whatsappText": "Hi AELFC, I'd like to book VIP Coaching."
+      },
+      {
+        "title": "Mediation Advisory",
+        "price": "$50",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to book a Mediation Advisory session."
+      },
+      {
+        "title": "Legal Opinion / Advisory",
+        "price": "$50",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to book a Legal Opinion / Advisory session."
+      },
+      {
+        "title": "Financial Service Advisory",
+        "price": "$50",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to book a Financial Service Advisory session."
+      },
+      {
+        "title": "Online Coaching Registration",
+        "price": "$30",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to register for online coaching."
+      },
+      {
+        "title": "3-Month Online Coaching",
+        "price": "$250",
+        "featured": false,
+        "badge": "",
+        "whatsappText": "Hi AELFC, I'd like to enroll in the 3-Month Online Coaching program."
+      }
+    ],
+    "formTag": "Prefer a Form?",
+    "formHeading": "Request a Booking",
+    "formLede": "Fill this in and we'll follow up by email — useful if you'd rather not use WhatsApp, or if someone else on our team needs to see your request."
+  }
+}

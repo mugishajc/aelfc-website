@@ -1,0 +1,24 @@
+{
+  "brand": {
+    "name": "AELFC",
+    "suffix": "Ltd",
+    "tagline": "Anaclet's Experts Legal & Financial Consultancy",
+    "companyFullName": "Anaclet's Experts Legal & Financial Consultancy Ltd",
+    "footerTagline": "Expert Solutions | Client-Focused | All-in-One Trusted Partner",
+    "copyrightName": "AELFC Ltd"
+  },
+  "contactInfo": {
+    "email": "info@anacletsexpert.com",
+    "phoneDisplay": "+250 788 236 356",
+    "phoneDigits": "250788236356",
+    "website": "anacletsexpert.com",
+    "businessHours": "Monday – Friday: 8:00 AM – 5:00 PM"
+  },
+  "socialLinks": {
+    "facebook": "https://www.facebook.com/mugisha.anaclet/about/",
+    "instagram": "",
+    "linkedin": "https://www.linkedin.com/company/anaclet-experts-legal-financial-consultancy-ltd",
+    "twitter": "https://x.com/MugishaAnaclet",
+    "youtube": ""
+  }
+}
