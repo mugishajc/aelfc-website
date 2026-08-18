@@ -281,6 +281,46 @@ function renderFees(data) {
   `;
 }
 
+function renderPartners(data) {
+  const container = document.getElementById('partners-content');
+  if (!container) return;
+  const p = data.partners;
+  const section = container.closest('section');
+  if (!p || !p.items || !p.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(p.tag)}</p>
+    <h2 class="center">${esc(p.heading)}</h2>
+    <div class="partners-grid">
+      ${p.items.map((item) => {
+        const img = `<img src="${esc(item.logo)}" alt="${esc(item.name || 'Partner logo')}">`;
+        return item.link ? `<a href="${esc(item.link)}" target="_blank" rel="noopener">${img}</a>` : img;
+      }).join('')}
+    </div>
+  `;
+}
+
+function renderDonate(data) {
+  const container = document.getElementById('donate-content');
+  if (!container) return;
+  const d = data.donate;
+  const section = container.closest('section');
+  if (!d || !d.buttonLink) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <div class="donate-card">
+      <p class="section-tag center">${esc(d.tag)}</p>
+      <h2 class="center">${esc(d.heading)}</h2>
+      <p>${esc(d.text)}</p>
+      <a class="btn btn-gold" href="${esc(d.buttonLink)}" target="_blank" rel="noopener">${esc(d.buttonLabel)}</a>
+    </div>
+  `;
+}
+
 function renderCommunity(data) {
   if (!document.getElementById('community-content')) return;
   const c = data.community;
@@ -424,7 +464,8 @@ function highlightActiveNav() {
 async function renderSite() {
   const files = [
     'brand', 'hero', 'about', 'founder', 'services', 'mediation', 'tools',
-    'brochures', 'certifications', 'fees', 'community', 'contact', 'footer', 'legal'
+    'brochures', 'certifications', 'fees', 'partners', 'donate', 'community',
+    'contact', 'footer', 'legal'
   ];
   const parts = await Promise.all(files.map(async (name) => {
     const response = await fetch(`content/${name}.json`);
@@ -443,6 +484,8 @@ async function renderSite() {
   renderBrochures(data);
   renderCertifications(data);
   renderFees(data);
+  renderPartners(data);
+  renderDonate(data);
   renderCommunity(data);
   renderContact(data);
   renderFooter(data);

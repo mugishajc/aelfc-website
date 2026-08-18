@@ -182,6 +182,32 @@ collections:
               { label: "Booking Form Lede", name: "formLede", widget: "text" }
             ]}
 
+      - name: "partners"
+        label: "Trusted By / Partners"
+        file: "content/partners.json"
+        fields:
+          - { label: "Partners", name: "partners", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Partner Logos (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Logo", name: "logo", widget: "image" },
+                  { label: "Partner Name", name: "name", widget: "string", required: false },
+                  { label: "Website Link (optional)", name: "link", widget: "string", required: false }
+                ]}
+            ]}
+
+      - name: "donate"
+        label: "Donate Section"
+        file: "content/donate.json"
+        fields:
+          - { label: "Donate", name: "donate", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Description Text", name: "text", widget: "text" },
+              { label: "Button Label", name: "buttonLabel", widget: "string" },
+              { label: "Button Link (payment page, MoMo instructions, etc. — this section stays hidden on the live site until this is filled in)", name: "buttonLink", widget: "string", required: false }
+            ]}
+
       - name: "community"
         label: "Support Our Work Section"
         file: "content/community.json"
