@@ -17,24 +17,23 @@ mainNav.querySelectorAll('a').forEach(link => {
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// Forms submit to Formspree via AJAX so visitors stay on the page
-async function handleFormspreeSubmit(form, noteEl, successMessage) {
+// Forms submit to our Netlify function (which emails via ZeptoMail) via AJAX
+// so visitors stay on the page.
+async function handleFormSubmit(form, noteEl, successMessage) {
   noteEl.textContent = 'Sending…';
+  const fields = Object.fromEntries(new FormData(form).entries());
   try {
-    const response = await fetch(form.action, {
+    const response = await fetch('/.netlify/functions/submit-form', {
       method: 'POST',
-      body: new FormData(form),
-      headers: { Accept: 'application/json' }
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ formType: form.dataset.formType, fields })
     });
-    if (response.ok) {
+    const data = await response.json().catch(() => null);
+    if (response.ok && data && data.ok) {
       form.reset();
       noteEl.textContent = successMessage;
     } else {
-      const data = await response.json().catch(() => null);
-      const errorMsg = data && data.errors
-        ? data.errors.map((e) => e.message).join(', ')
-        : 'Something went wrong. Please try again or reach out via WhatsApp.';
-      noteEl.textContent = errorMsg;
+      noteEl.textContent = 'Something went wrong. Please try again or reach out via WhatsApp.';
     }
   } catch (err) {
     noteEl.textContent = 'Could not send right now. Please try again or reach out via WhatsApp.';
@@ -50,7 +49,7 @@ document.addEventListener('content:rendered', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      handleFormspreeSubmit(contactForm, formNote, "Thanks — your message is on its way. We'll get back to you soon.");
+      handleFormSubmit(contactForm, formNote, "Thanks — your message is on its way. We'll get back to you soon.");
     });
   }
 
@@ -59,7 +58,47 @@ document.addEventListener('content:rendered', () => {
   if (newsletterForm) {
     newsletterForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      handleFormspreeSubmit(newsletterForm, newsletterNote, "Thanks — you're subscribed!");
+      handleFormSubmit(newsletterForm, newsletterNote, "Thanks — you're subscribed!");
+    });
+  }
+
+  const testimonialForm = document.getElementById('testimonial-form');
+  const testimonialNote = document.getElementById('testimonial-note');
+  if (testimonialForm) {
+    testimonialForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      handleFormSubmit(testimonialForm, testimonialNote, "Thanks for sharing! We'll review it before it goes live.");
+    });
+  }
+
+  const blogGrid = document.getElementById('blog-grid');
+  if (blogGrid) {
+    const searchInput = document.getElementById('blog-search');
+    const filterButtons = document.querySelectorAll('.blog-filter');
+    const noResults = document.getElementById('blog-no-results');
+    let activeCategory = '';
+
+    const applyBlogFilter = () => {
+      const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+      let visibleCount = 0;
+      blogGrid.querySelectorAll('.blog-card').forEach((card) => {
+        const matchesCategory = !activeCategory || card.dataset.category === activeCategory;
+        const matchesSearch = !query || card.dataset.search.includes(query);
+        const show = matchesCategory && matchesSearch;
+        card.style.display = show ? '' : 'none';
+        if (show) visibleCount += 1;
+      });
+      if (noResults) noResults.style.display = visibleCount ? 'none' : '';
+    };
+
+    if (searchInput) searchInput.addEventListener('input', applyBlogFilter);
+    filterButtons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeCategory = btn.dataset.category;
+        applyBlogFilter();
+      });
     });
   }
 

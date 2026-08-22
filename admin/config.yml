@@ -76,6 +76,24 @@ collections:
               { label: "Motto Quote", name: "mottoQuote", widget: "string" },
               { label: "Motto Subtext", name: "mottoSub", widget: "string" }
             ]}
+          - { label: "Our Approach / Why Choose Us", name: "approach", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Approach Points", name: "items", widget: "list", fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Text", name: "text", widget: "text" }
+                ]}
+            ]}
+          - { label: "Management Team", name: "team", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Team Members (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Name", name: "name", widget: "string" },
+                  { label: "Position", name: "role", widget: "string" },
+                  { label: "Photo", name: "photo", widget: "image", required: false },
+                  { label: "Experience / Bio", name: "bio", widget: "text" }
+                ]}
+            ]}
 
       - name: "founder"
         label: "Meet the Founder Section"
@@ -200,7 +218,12 @@ collections:
                   { label: "Heading", name: "heading", widget: "string" },
                   { label: "Posts (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
                       { label: "Title", name: "title", widget: "string" },
-                      { label: "Date", name: "date", widget: "string", required: false },
+                      { label: "Published?", name: "published", widget: "boolean", default: true },
+                      { label: "Publish Date (post stays hidden until this date — leave empty to show immediately)", name: "publishDate", widget: "datetime", required: false },
+                      { label: "Feature this post?", name: "featured", widget: "boolean", default: false },
+                      { label: "Category (e.g. Legal, Tax, Finance, Company News)", name: "category", widget: "string", required: false },
+                      { label: "Tags", name: "tags", widget: "list", field: { label: "Tag", name: "tag", widget: "string" }, required: false },
+                      { label: "Date (display text, e.g. August 2026)", name: "date", widget: "string", required: false },
                       { label: "Image (optional)", name: "image", widget: "image", required: false },
                       { label: "Excerpt", name: "excerpt", widget: "text" },
                       { label: "Link (where the full post lives — your own page, LinkedIn, Medium, etc.)", name: "link", widget: "string" }
@@ -216,17 +239,82 @@ collections:
                 ]}
             ]}
 
-      - name: "partners"
-        label: "Trusted By / Partners"
-        file: "content/partners.json"
+      - name: "testimonials"
+        label: "Trusted By / Client Testimonials"
+        file: "content/testimonials.json"
         fields:
-          - { label: "Partners", name: "partners", widget: "object", fields: [
+          - { label: "Testimonials", name: "testimonials", widget: "object", fields: [
               { label: "Tag", name: "tag", widget: "string" },
               { label: "Heading", name: "heading", widget: "string" },
-              { label: "Partner Logos (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
-                  { label: "Logo", name: "logo", widget: "image" },
-                  { label: "Partner Name", name: "name", widget: "string", required: false },
-                  { label: "Website Link (optional)", name: "link", widget: "string", required: false }
+              { label: "Lede", name: "lede", widget: "text", required: false },
+              { label: "Submission Prompt Heading", name: "submitHeading", widget: "string" },
+              { label: "Submission Prompt Text", name: "submitText", widget: "text" },
+              { label: "Testimonials (this section stays hidden on the live site until you add at least one — review every submission before adding it here)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Client / Company Name", name: "clientName", widget: "string" },
+                  { label: "Company Logo (optional)", name: "logo", widget: "image", required: false },
+                  { label: "Testimonial (leave empty for a logo-only client entry, with no quote)", name: "testimonial", widget: "text", required: false },
+                  { label: "Service Provided", name: "serviceProvided", widget: "string", required: false },
+                  { label: "Period / Year Worked Together", name: "period", widget: "string", required: false },
+                  { label: "Client Category / Industry", name: "category", widget: "string", required: false },
+                  { label: "Website / Social Link (optional)", name: "link", widget: "string", required: false },
+                  { label: "Full Success Story (optional — a longer write-up; shown behind a \"Read full story\" link)", name: "fullStory", widget: "text", required: false }
+                ]}
+            ]}
+
+      - name: "events"
+        label: "Events"
+        file: "content/events.json"
+        fields:
+          - { label: "Events", name: "events", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Lede", name: "lede", widget: "text" },
+              { label: "Events — set a date; it moves to Past Events automatically once that date is gone (this section stays hidden until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Description", name: "description", widget: "text" },
+                  { label: "Date", name: "date", widget: "date" },
+                  { label: "Time (optional)", name: "time", widget: "string", required: false },
+                  { label: "Venue", name: "venue", widget: "string", required: false },
+                  { label: "Image (optional)", name: "image", widget: "image", required: false },
+                  { label: "Registration / Booking Link (optional — for upcoming events)", name: "registrationLink", widget: "string", required: false },
+                  { label: "Recap / Report (optional — for past events)", name: "recap", widget: "text", required: false }
+                ]}
+            ]}
+
+      - name: "announcements"
+        label: "Announcements"
+        file: "content/announcements.json"
+        fields:
+          - { label: "Announcements", name: "announcements", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Announcements (this section stays hidden until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Title", name: "title", widget: "string" },
+                  { label: "Category", name: "category", widget: "select", options: ["Company News", "Important Notices", "Training", "Events", "Career Opportunities", "Promotions"] },
+                  { label: "Short Description (shown in the list/banner)", name: "shortDescription", widget: "text" },
+                  { label: "Full Description (optional)", name: "fullDescription", widget: "text", required: false },
+                  { label: "Image (optional)", name: "image", widget: "image", required: false },
+                  { label: "Attachment (optional)", name: "attachment", widget: "file", required: false },
+                  { label: "Publish Date (hidden before this date)", name: "publishDate", widget: "date" },
+                  { label: "Expiry Date (moves to Past Announcements after this date)", name: "expiryDate", widget: "date", required: false },
+                  { label: "Priority", name: "priority", widget: "select", options: ["Normal", "Urgent"], default: "Normal" },
+                  { label: "Status", name: "status", widget: "select", options: ["Draft", "Published"], default: "Draft" },
+                  { label: "Author (optional)", name: "author", widget: "string", required: false },
+                  { label: "Button Label (optional)", name: "ctaLabel", widget: "string", required: false },
+                  { label: "Button Link (optional)", name: "ctaLink", widget: "string", required: false }
+                ]}
+            ]}
+
+      - name: "faq"
+        label: "FAQs"
+        file: "content/faq.json"
+        fields:
+          - { label: "FAQ", name: "faq", widget: "object", fields: [
+              { label: "Tag", name: "tag", widget: "string" },
+              { label: "Heading", name: "heading", widget: "string" },
+              { label: "Questions (this section stays hidden on the live site until you add at least one)", name: "items", widget: "list", required: false, fields: [
+                  { label: "Question", name: "question", widget: "string" },
+                  { label: "Answer", name: "answer", widget: "text" }
                 ]}
             ]}
 

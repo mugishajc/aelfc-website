@@ -65,6 +65,8 @@ function renderHomeExplore(data) {
     { href: 'services.html', tag: data.services.tag, title: data.services.heading, blurb: 'Legal, financial, mediation and business advisory services.' },
     { href: 'mediation.html', tag: data.mediation.tag, title: data.mediation.heading, blurb: data.mediation.lede },
     { href: 'tools.html', tag: data.tools.tag, title: data.tools.heading, blurb: data.tools.lede },
+    { href: 'resources.html', tag: data.resources.tag, title: data.resources.heading, blurb: data.resources.lede },
+    { href: 'events.html', tag: data.events.tag, title: data.events.heading, blurb: data.events.lede },
     { href: 'brochures.html', tag: data.brochures.tag, title: data.brochures.heading, blurb: data.brochures.lede },
     { href: 'fees.html', tag: data.fees.tag, title: data.fees.heading, blurb: data.fees.lede },
     { href: 'community.html', tag: data.community.tag, title: data.community.heading, blurb: data.community.text },
@@ -94,18 +96,63 @@ function renderAbout(data) {
     <p class="section-tag center">${esc(a.tag)}</p>
     <h2 class="center">${esc(a.heading)}</h2>
     <p class="section-lede center">${esc(a.lede)}</p>
+    <p class="section-tag center" style="margin-top:40px">Company Background</p>
     ${a.paragraphs.map((p) => `<p class="about-overview">${esc(p)}</p>`).join('')}
+    <p class="section-tag center" style="margin-top:56px">Mission, Vision &amp; Core Values</p>
     <div class="vm-grid">
       <div class="vm-card"><h3>Our Vision</h3><p>${esc(a.vision)}</p></div>
       <div class="vm-card"><h3>Our Mission</h3><p>${esc(a.mission)}</p></div>
     </div>
-    <p class="section-tag center" style="margin-top:56px">Our Core Values</p>
+    <p class="section-tag center" style="margin-top:40px">Our Core Values</p>
     <div class="pill-grid">
       ${a.coreValues.map((v) => `<span>${esc(v)}</span>`).join('')}
     </div>
     <div class="motto">
       <p>&ldquo;${esc(a.mottoQuote)}&rdquo;</p>
       <span>${esc(a.mottoSub)}</span>
+    </div>
+  `;
+}
+
+function renderApproach(data) {
+  const container = document.getElementById('approach-content');
+  if (!container) return;
+  const a = data.approach;
+  container.innerHTML = `
+    <p class="section-tag center">${esc(a.tag)}</p>
+    <h2 class="center">${esc(a.heading)}</h2>
+    <div class="approach-grid">
+      ${a.items.map((item) => `
+        <div class="approach-card">
+          <h3>${esc(item.title)}</h3>
+          <p>${esc(item.text)}</p>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderTeam(data) {
+  const container = document.getElementById('team-content');
+  if (!container) return;
+  const t = data.team;
+  const section = container.closest('section');
+  if (!t.items || !t.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(t.tag)}</p>
+    <h2 class="center">${esc(t.heading)}</h2>
+    <div class="team-grid">
+      ${t.items.map((member) => `
+        <div class="team-card">
+          ${member.photo ? `<img src="${esc(member.photo)}" alt="${esc(member.name)}">` : ''}
+          <h3>${esc(member.name)}</h3>
+          <p class="team-role">${esc(member.role)}</p>
+          <p>${esc(member.bio)}</p>
+        </div>
+      `).join('')}
     </div>
   `;
 }
@@ -118,7 +165,7 @@ function renderFounder(data) {
     <p class="section-tag">${esc(f.tag)}</p>
     <h2>${esc(f.name)}</h2>
     <p class="about-role">${esc(f.role)}</p>
-    ${f.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}
+    ${f.paragraphs.map((p) => `<p class="founder-bio">${esc(p)}</p>`).join('')}
     <div class="expertise-pills">
       ${f.expertise.map((x) => `<span>${esc(x)}</span>`).join('')}
     </div>
@@ -292,8 +339,8 @@ function renderResources(data) {
     <div class="newsletter-card">
       <h3>${esc(n.heading)}</h3>
       <p>${esc(n.text)}</p>
-      <form class="newsletter-form" id="newsletter-form" action="https://formspree.io/f/xvkpkwbp" method="POST">
-        <input type="hidden" name="_subject" value="New newsletter signup">
+      <form class="newsletter-form" id="newsletter-form" data-form-type="newsletter">
+        <input type="text" name="company_website" class="hp-field" tabindex="-1" autocomplete="off">
         <input type="email" name="email" placeholder="you@example.com" required>
         <button type="submit" class="btn btn-gold">${esc(n.buttonLabel)}</button>
       </form>
@@ -308,25 +355,54 @@ function renderResourceBlog(data) {
   if (!container) return;
   const b = data.resources.blog;
   const section = container.closest('section');
-  if (!b.items || !b.items.length) {
+
+  const nowIso = new Date().toISOString();
+  const visible = (b.items || []).filter((post) => {
+    if (post.published === false) return false;
+    if (post.publishDate && post.publishDate > nowIso) return false;
+    return true;
+  });
+  visible.sort((a, b2) => (b2.featured ? 1 : 0) - (a.featured ? 1 : 0));
+
+  if (!visible.length) {
     if (section) section.style.display = 'none';
     return;
   }
+
+  const categories = [...new Set(visible.map((p) => p.category).filter(Boolean))];
+
   container.innerHTML = `
     <p class="section-tag center">${esc(b.tag)}</p>
     <h2 class="center">${esc(b.heading)}</h2>
-    <div class="blog-grid">
-      ${b.items.map((post) => `
-        <a class="blog-card" href="${esc(post.link)}" target="_blank" rel="noopener">
+    <div class="blog-controls">
+      <input type="search" id="blog-search" placeholder="Search articles...">
+      ${categories.length ? `
+        <div class="blog-filters" id="blog-filters">
+          <button type="button" class="blog-filter active" data-category="">All</button>
+          ${categories.map((c) => `<button type="button" class="blog-filter" data-category="${esc(c)}">${esc(c)}</button>`).join('')}
+        </div>
+      ` : ''}
+    </div>
+    <div class="blog-grid" id="blog-grid">
+      ${visible.map((post) => `
+        <a class="blog-card${post.featured ? ' featured' : ''}" href="${esc(post.link)}" target="_blank" rel="noopener"
+           data-category="${esc(post.category || '')}"
+           data-search="${esc(((post.title || '') + ' ' + (post.excerpt || '') + ' ' + (post.tags || []).join(' ')).toLowerCase())}">
+          ${post.featured ? '<span class="blog-featured-badge">Featured</span>' : ''}
           ${post.image ? `<img src="${esc(post.image)}" alt="${esc(post.title)}">` : ''}
           <div class="blog-card-body">
-            ${post.date ? `<span class="blog-date">${esc(post.date)}</span>` : ''}
+            <div class="blog-card-meta">
+              ${post.category ? `<span class="blog-category">${esc(post.category)}</span>` : ''}
+              ${post.date ? `<span class="blog-date">${esc(post.date)}</span>` : ''}
+            </div>
             <h3>${esc(post.title)}</h3>
             <p>${esc(post.excerpt)}</p>
+            ${(post.tags && post.tags.length) ? `<div class="blog-tags">${post.tags.map((t) => `<span>#${esc(t)}</span>`).join('')}</div>` : ''}
           </div>
         </a>
       `).join('')}
     </div>
+    <p class="blog-no-results" id="blog-no-results" style="display:none">No articles match your search.</p>
   `;
 }
 
@@ -353,23 +429,241 @@ function renderResourceVideos(data) {
   `;
 }
 
-function renderPartners(data) {
-  const container = document.getElementById('partners-content');
+function formatEventDate(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso;
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+
+function renderEventsIntro(data) {
+  const container = document.getElementById('events-intro-content');
   if (!container) return;
-  const p = data.partners;
+  const e = data.events;
+  container.innerHTML = `
+    <p class="section-tag center">${esc(e.tag)}</p>
+    <h2 class="center">${esc(e.heading)}</h2>
+    <p class="section-lede center">${esc(e.lede)}</p>
+  `;
+}
+
+function splitEvents(items) {
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const upcoming = items.filter((ev) => ev.date >= todayIso).sort((a, b) => a.date.localeCompare(b.date));
+  const past = items.filter((ev) => ev.date < todayIso).sort((a, b) => b.date.localeCompare(a.date));
+  return { upcoming, past };
+}
+
+function renderEventsUpcoming(data) {
+  const container = document.getElementById('events-upcoming-content');
+  if (!container) return;
   const section = container.closest('section');
-  if (!p || !p.items || !p.items.length) {
+  const { upcoming } = splitEvents(data.events.items || []);
+  if (!upcoming.length) {
     if (section) section.style.display = 'none';
     return;
   }
   container.innerHTML = `
-    <p class="section-tag center">${esc(p.tag)}</p>
-    <h2 class="center">${esc(p.heading)}</h2>
-    <div class="partners-grid">
-      ${p.items.map((item) => {
-        const img = `<img src="${esc(item.logo)}" alt="${esc(item.name || 'Partner logo')}">`;
-        return item.link ? `<a href="${esc(item.link)}" target="_blank" rel="noopener">${img}</a>` : img;
-      }).join('')}
+    <p class="section-tag center">Upcoming</p>
+    <h2 class="center">Upcoming Events</h2>
+    <div class="event-grid">
+      ${upcoming.map((ev) => `
+        <div class="event-card">
+          ${ev.image ? `<img src="${esc(ev.image)}" alt="${esc(ev.title)}">` : ''}
+          <div class="event-card-body">
+            <span class="event-date">${esc(formatEventDate(ev.date))}${ev.time ? ` &middot; ${esc(ev.time)}` : ''}</span>
+            <h3>${esc(ev.title)}</h3>
+            ${ev.venue ? `<p class="event-venue">${esc(ev.venue)}</p>` : ''}
+            <p>${esc(ev.description)}</p>
+            ${ev.registrationLink ? `<a class="btn btn-gold-small" href="${esc(ev.registrationLink)}" target="_blank" rel="noopener">Register</a>` : ''}
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function renderEventsPast(data) {
+  const container = document.getElementById('events-past-content');
+  if (!container) return;
+  const section = container.closest('section');
+  const { past } = splitEvents(data.events.items || []);
+  if (!past.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">Past Events</p>
+    <h2 class="center">What We've Hosted</h2>
+    <div class="event-grid">
+      ${past.map((ev) => `
+        <div class="event-card">
+          ${ev.image ? `<img src="${esc(ev.image)}" alt="${esc(ev.title)}">` : ''}
+          <div class="event-card-body">
+            <span class="event-date">${esc(formatEventDate(ev.date))}</span>
+            <h3>${esc(ev.title)}</h3>
+            ${ev.venue ? `<p class="event-venue">${esc(ev.venue)}</p>` : ''}
+            <p>${esc(ev.recap || ev.description)}</p>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+function classifyAnnouncements(items) {
+  const todayIso = new Date().toISOString().slice(0, 10);
+  const published = (items || []).filter((a) => a.status === 'Published' && a.publishDate && a.publishDate <= todayIso);
+  const active = published.filter((a) => !a.expiryDate || a.expiryDate >= todayIso);
+  const past = published.filter((a) => a.expiryDate && a.expiryDate < todayIso);
+  active.sort((a, b) => b.publishDate.localeCompare(a.publishDate));
+  past.sort((a, b) => b.expiryDate.localeCompare(a.expiryDate));
+  return { active, past };
+}
+
+function renderAnnouncementBanner(data) {
+  const el = document.getElementById('announcement-banner');
+  if (!el || !data.announcements) return;
+  const { active } = classifyAnnouncements(data.announcements.items || []);
+  const urgent = active.find((a) => a.priority === 'Urgent');
+  if (!urgent) return;
+  const dismissKey = 'dismissed-announcement-' + urgent.title;
+  if (sessionStorage.getItem(dismissKey)) return;
+
+  el.innerHTML = `
+    <div class="urgent-banner">
+      <div class="container urgent-banner-inner">
+        <span><strong>${esc(urgent.title)}:</strong> ${esc(urgent.shortDescription)}</span>
+        <div class="urgent-banner-actions">
+          ${urgent.ctaLink ? `<a href="${esc(urgent.ctaLink)}">${esc(urgent.ctaLabel || 'Learn more')}</a>` : `<a href="announcements.html">Learn more</a>`}
+          <button type="button" class="urgent-banner-close" aria-label="Dismiss">&times;</button>
+        </div>
+      </div>
+    </div>
+  `;
+  const closeBtn = el.querySelector('.urgent-banner-close');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      sessionStorage.setItem(dismissKey, '1');
+      el.innerHTML = '';
+    });
+  }
+}
+
+function shareLinks(title, text) {
+  const pageUrl = window.location.origin + window.location.pathname;
+  const shareText = encodeURIComponent(`${title} — ${text}`);
+  const url = encodeURIComponent(pageUrl);
+  return {
+    whatsapp: `https://wa.me/?text=${shareText}%20${url}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    twitter: `https://twitter.com/intent/tweet?text=${shareText}&url=${url}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+    email: `mailto:?subject=${encodeURIComponent(title)}&body=${shareText}%20${url}`
+  };
+}
+
+function announcementCard(a) {
+  const share = shareLinks(a.title, a.shortDescription);
+  return `
+    <div class="announcement-card${a.priority === 'Urgent' ? ' urgent' : ''}">
+      ${a.image ? `<img src="${esc(a.image)}" alt="${esc(a.title)}">` : ''}
+      <div class="announcement-card-body">
+        <span class="announcement-category">${esc(a.category)}</span>
+        <h3>${esc(a.title)}</h3>
+        <span class="event-date">${esc(formatEventDate(a.publishDate))}</span>
+        <p>${esc(a.fullDescription || a.shortDescription)}</p>
+        ${a.attachment ? `<a class="card-request-alt" href="${esc(a.attachment)}" target="_blank" rel="noopener">View attachment &rarr;</a>` : ''}
+        ${a.ctaLink ? `<a class="btn btn-gold-small" href="${esc(a.ctaLink)}" target="_blank" rel="noopener">${esc(a.ctaLabel || 'Learn more')}</a>` : ''}
+        ${a.author ? `<p class="announcement-author">${esc(a.author)}</p>` : ''}
+        <div class="share-row">
+          <span class="share-label">Share:</span>
+          <a href="${share.whatsapp}" target="_blank" rel="noopener" aria-label="Share on WhatsApp">WA</a>
+          <a href="${share.facebook}" target="_blank" rel="noopener" aria-label="Share on Facebook">FB</a>
+          <a href="${share.twitter}" target="_blank" rel="noopener" aria-label="Share on X">X</a>
+          <a href="${share.linkedin}" target="_blank" rel="noopener" aria-label="Share on LinkedIn">in</a>
+          <a href="${share.email}" aria-label="Share by email">&#9993;</a>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderAnnouncementsPage(data) {
+  const latestContainer = document.getElementById('announcements-latest-content');
+  if (!latestContainer) return;
+  const ann = data.announcements;
+  const { active, past } = classifyAnnouncements(ann.items || []);
+
+  latestContainer.innerHTML = `
+    <p class="section-tag center">${esc(ann.tag)}</p>
+    <h2 class="center">${esc(ann.heading)}</h2>
+    ${active.length
+      ? `<div class="announcement-grid">${active.map(announcementCard).join('')}</div>`
+      : `<p class="section-lede center">No active announcements right now — check back soon.</p>`}
+  `;
+
+  const pastContainer = document.getElementById('announcements-past-content');
+  if (!pastContainer) return;
+  const pastSection = pastContainer.closest('section');
+  if (!past.length) {
+    if (pastSection) pastSection.style.display = 'none';
+    return;
+  }
+  pastContainer.innerHTML = `
+    <p class="section-tag center">Past Announcements</p>
+    <h2 class="center">Archive</h2>
+    <div class="announcement-grid">${past.map(announcementCard).join('')}</div>
+  `;
+}
+
+function renderTestimonials(data) {
+  const container = document.getElementById('testimonials-content');
+  if (!container) return;
+  const t = data.testimonials;
+  const cardsHtml = (t.items && t.items.length) ? `
+    <p class="section-tag center">${esc(t.tag)}</p>
+    <h2 class="center">${esc(t.heading)}</h2>
+    ${t.lede ? `<p class="section-lede center">${esc(t.lede)}</p>` : ''}
+    <div class="testimonial-grid">
+      ${t.items.map((item) => `
+        <div class="testimonial-card${item.testimonial ? '' : ' logo-only'}">
+          ${item.logo ? `<img class="testimonial-logo" src="${esc(item.logo)}" alt="${esc(item.clientName)}">` : ''}
+          ${item.testimonial ? `<p class="testimonial-quote">&ldquo;${esc(item.testimonial)}&rdquo;</p>` : ''}
+          <p class="testimonial-client">${esc(item.clientName)}</p>
+          ${item.serviceProvided ? `<p class="testimonial-meta">${esc(item.serviceProvided)}</p>` : ''}
+          <p class="testimonial-meta-line">
+            ${item.category ? `<span>${esc(item.category)}</span>` : ''}
+            ${item.period ? `<span>${esc(item.period)}</span>` : ''}
+          </p>
+          ${item.fullStory ? `
+            <details class="testimonial-story">
+              <summary>Read full story</summary>
+              <p>${esc(item.fullStory)}</p>
+            </details>
+          ` : ''}
+          ${item.link ? `<a class="card-request-alt" href="${esc(item.link)}" target="_blank" rel="noopener">Visit website &rarr;</a>` : ''}
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  container.innerHTML = `
+    ${cardsHtml}
+    <div class="testimonial-submit-card">
+      <h3>${esc(t.submitHeading)}</h3>
+      <p>${esc(t.submitText)}</p>
+      <form class="testimonial-form" id="testimonial-form" data-form-type="testimonial">
+        <input type="text" name="company_website" class="hp-field" tabindex="-1" autocomplete="off">
+        <label>Client / Company Name<input type="text" name="clientName" required></label>
+        <label>Your Testimonial<textarea name="testimonial" rows="4" required></textarea></label>
+        <label>Service Provided<input type="text" name="serviceProvided" required></label>
+        <label>Period / Year Worked Together<input type="text" name="period"></label>
+        <label>Category / Industry<input type="text" name="category"></label>
+        <label>Website / Social Link <span class="optional-tag">optional</span><input type="text" name="link"></label>
+        <button type="submit" class="btn btn-navy">Submit Testimonial</button>
+        <p class="form-note" id="testimonial-note"></p>
+      </form>
     </div>
   `;
 }
@@ -408,6 +702,29 @@ function renderCommunity(data) {
   `;
 }
 
+function renderFAQ(data) {
+  const container = document.getElementById('faq-content');
+  if (!container) return;
+  const f = data.faq;
+  const section = container.closest('section');
+  if (!f.items || !f.items.length) {
+    if (section) section.style.display = 'none';
+    return;
+  }
+  container.innerHTML = `
+    <p class="section-tag center">${esc(f.tag)}</p>
+    <h2 class="center">${esc(f.heading)}</h2>
+    <div class="faq-list">
+      ${f.items.map((item) => `
+        <details class="faq-item">
+          <summary>${esc(item.question)}</summary>
+          <p>${esc(item.answer)}</p>
+        </details>
+      `).join('')}
+    </div>
+  `;
+}
+
 function renderContact(data) {
   if (!document.getElementById('contact-copy')) return;
   const c = data.contact;
@@ -438,8 +755,8 @@ function renderContact(data) {
     <p class="section-tag center">Or Fill In This Form</p>
     <h3 class="center">One Form, Every Request</h3>
     <p class="section-lede center">Whatever you need — a service, a booking, a resource, or just a question — this one form reaches us directly.</p>
-    <form class="full-form" id="contact-form" action="https://formspree.io/f/xvkpkwbp" method="POST">
-      <input type="hidden" name="_subject" value="New message from the website">
+    <form class="full-form" id="contact-form" data-form-type="contact">
+      <input type="text" name="company_website" class="hp-field" tabindex="-1" autocomplete="off">
       <label>Full name<input type="text" name="name" required></label>
       <label>Email<input type="email" name="email" required></label>
       <label>Phone number<input type="tel" name="phone" required></label>
@@ -520,7 +837,7 @@ function renderLegal(data) {
     <p class="legal-updated">${esc(legal.updated)}</p>
     ${legal.sections.map((s) => `
       ${s.heading ? `<h2>${esc(s.heading)}</h2>` : ''}
-      <p>${esc(s.body)}</p>
+      <p class="legal-body">${esc(s.body)}</p>
     `).join('')}
   `;
 }
@@ -535,9 +852,9 @@ function highlightActiveNav() {
 
 async function renderSite() {
   const files = [
-    'brand', 'hero', 'about', 'founder', 'services', 'mediation', 'tools',
-    'brochures', 'certifications', 'fees', 'resources', 'partners', 'donate',
-    'community', 'contact', 'footer', 'legal'
+    'brand', 'hero', 'about', 'founder', 'services', 'mediation', 'tools', 'faq',
+    'brochures', 'certifications', 'fees', 'resources', 'testimonials', 'events',
+    'announcements', 'donate', 'community', 'contact', 'footer', 'legal'
   ];
   const parts = await Promise.all(files.map(async (name) => {
     const response = await fetch(`content/${name}.json`);
@@ -549,6 +866,8 @@ async function renderSite() {
   renderHero(data);
   renderHomeExplore(data);
   renderAbout(data);
+  renderApproach(data);
+  renderTeam(data);
   renderFounder(data);
   renderServices(data);
   renderMediation(data);
@@ -559,10 +878,16 @@ async function renderSite() {
   renderResources(data);
   renderResourceBlog(data);
   renderResourceVideos(data);
-  renderPartners(data);
+  renderTestimonials(data);
+  renderEventsIntro(data);
+  renderEventsUpcoming(data);
+  renderEventsPast(data);
+  renderAnnouncementBanner(data);
+  renderAnnouncementsPage(data);
   renderDonate(data);
   renderCommunity(data);
   renderContact(data);
+  renderFAQ(data);
   renderFooter(data);
   renderLegal(data);
   highlightActiveNav();

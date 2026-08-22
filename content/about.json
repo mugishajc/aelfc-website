@@ -22,5 +22,32 @@
     ],
     "mottoQuote": "Professional Solutions. Sustainable Success.",
     "mottoSub": "Live by choice, not by chance."
+  },
+  "approach": {
+    "tag": "Our Approach",
+    "heading": "Why Choose Us",
+    "items": [
+      {
+        "title": "Multidisciplinary Expertise",
+        "text": "Legal, financial and mediation expertise under one roof, so you get coordinated advice instead of fragmented opinions."
+      },
+      {
+        "title": "Confidential & Ethical",
+        "text": "Every engagement is handled with strict confidentiality and the highest professional and ethical standards."
+      },
+      {
+        "title": "Client-Centered Advisory",
+        "text": "We take time to understand your specific situation before recommending a solution — no one-size-fits-all templates."
+      },
+      {
+        "title": "Practical, Actionable Solutions",
+        "text": "Advice you can actually implement, focused on compliance, risk reduction and sustainable growth."
+      }
+    ]
+  },
+  "team": {
+    "tag": "Our People",
+    "heading": "Management Team",
+    "items": []
   }
 }

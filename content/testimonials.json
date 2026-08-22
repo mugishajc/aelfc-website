@@ -1,0 +1,20 @@
+{
+  "testimonials": {
+    "tag": "Trusted By",
+    "heading": "Our Clients & Testimonials",
+    "lede": "Organizations we've worked with, in their own words.",
+    "submitHeading": "Worked With Us? Share Your Experience",
+    "submitText": "Submit your testimonial below — our team reviews every submission before it's published, so it may take a few days to appear.",
+    "items": [
+      {
+        "clientName": "Dorcas Consolation Family",
+        "logo": "",
+        "testimonial": "Anaclet provided us with professional and reliable financial advisory and internal audit support. Their work helped us identify gaps in our financial management, strengthen internal controls, improve record-keeping and enhance our financial reporting processes. We appreciated their professionalism, confidentiality, analytical approach and commitment to understanding our organizational needs. We would recommend AELFC Ltd to organizations seeking practical legal, financial and audit advisory services.",
+        "serviceProvided": "Financial Advisory & Internal Audit Support",
+        "period": "2023 – Present",
+        "category": "NGO",
+        "link": "https://dorcasconsolation.org/"
+      }
+    ]
+  }
+}
